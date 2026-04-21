@@ -16,4 +16,4 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-I am a final year digital forensics student.
+I am a Digital Forensics graduate.
