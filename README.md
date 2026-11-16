@@ -2,9 +2,9 @@
 
 Unofficial interactive guide to the Casio GW-M5610U (module 3495).
 
-Live page: https://etnmc.github.io/etnmc/
+Live page: https://etnmc.github.io/etnmc/gw-m5610u/
 
-This branch (`gh-pages`) holds only the site. It shares no history with `main`.
+This branch (`gh-pages`) holds only the site, in the `gw-m5610u/` folder. It shares no history with `main`. The `index.html` at the top level only redirects to that folder.
 
 ## What is on the page
 
@@ -22,18 +22,20 @@ This branch (`gh-pages`) holds only the site. It shares no history with `main`.
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | The built page. Self-contained apart from Google Fonts. |
-| `src/page.html` | Title, fonts, styles and markup. |
-| `src/head.html` | Extra tags for `<head>` (description, icon). |
-| `src/core.js` | Simulator logic. No DOM, so it also runs in Node. |
-| `src/ui.js` | Drawing, buttons, panels and demos. |
-| `build.sh` | Joins the sources into `index.html`. |
-| `test/core.test.js` | Logic tests. |
+| `gw-m5610u/index.html` | The built page. Self-contained apart from Google Fonts. |
+| `gw-m5610u/src/page.html` | Title, fonts, styles and markup. |
+| `gw-m5610u/src/head.html` | Extra tags for `<head>` (description, icon). |
+| `gw-m5610u/src/core.js` | Simulator logic. No DOM, so it also runs in Node. |
+| `gw-m5610u/src/ui.js` | Drawing, buttons, panels and demos. |
+| `gw-m5610u/build.sh` | Joins the sources into `index.html`. |
+| `gw-m5610u/test/core.test.js` | Logic tests. |
+| `index.html` | Redirect to `gw-m5610u/`. |
 | `.nojekyll` | Tells GitHub Pages to serve the files as they are. |
 
 ## Changing it
 
 ```sh
+cd gw-m5610u
 ./build.sh                 # rebuild index.html after editing src/
 node test/core.test.js     # should end with ALL OK
 ```
