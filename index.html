@@ -1,0 +1,2013 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Unofficial interactive guide to the Casio GW-M5610U (module 3495): a working button simulator, plus radio sync, solar charging, light, settings, world time, alarm, stopwatch and timer.">
+<meta name="theme-color" content="#05090e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GW-M5610U Field Guide">
+<meta property="og:description" content="Unofficial interactive guide to the Casio GW-M5610U (module 3495) with a working button simulator.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='4' y='4' width='24' height='24' rx='7' fill='%230a1118' stroke='%2374d9f0' stroke-width='2'/%3E%3Crect x='9' y='11' width='14' height='10' rx='2' fill='%23a8b2a1'/%3E%3Cpath d='M12 17h8' stroke='%23131a1c' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>
+<title>GW-M5610U Field Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Jura:wght@300;400;500;600&family=Share+Tech+Mono&display=swap">
+<style>
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+:root{
+  /* Layout: sticky simulator column on the left and dossier panels on the right from 1000px; one column below that. Single dark look by design. */
+  --void:#05090e; --deep:#0a1118; --glass:rgba(126,190,225,.05); --glass2:rgba(126,190,225,.11);
+  --line:rgba(150,205,235,.2); --line2:rgba(170,222,245,.5);
+  --ink:#dcf0f8; --ink2:#a6c0cd; --dim:#7892a1;
+  --cyan:#74d9f0; --amber:#f2a63b; --good:#5fd08f; --warn:#f2b33b; --crit:#f07464;
+  --lcd:#a8b2a1; --seg:#131a1c; --case:#0a1016; --face:#070b10; --cap:#121c25;
+  --case-hi:#18262f; --case-mid:#0d151d; --case-lo:#05090c; --cap-hover:#1d2f3c; --edge:#aadef5; --glare:#dff3fa; --shade:#000;
+  --f-d:'Jura','Segoe UI',system-ui,sans-serif;
+  --f-b:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-m:'Share Tech Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--void);color:var(--ink);font:400 16px/1.5 var(--f-b);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(1000px 560px at 82% -120px,rgba(64,150,196,.2),transparent 62%),radial-gradient(760px 520px at -160px 380px,rgba(52,104,160,.13),transparent 62%);background-repeat:no-repeat}
+.wrap{max-width:1320px;margin:0 auto;padding-block:22px 72px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--cyan)}
+p{margin:0 0 12px;max-width:68ch}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ---------- header ---------- */
+.wrap>header{position:relative;z-index:0}
+.wrap>header::after{content:"";position:absolute;z-index:-1;top:-22px;right:0;width:min(52%,560px);height:250px;pointer-events:none;
+  background-image:radial-gradient(rgba(150,205,235,.2) 1px,transparent 1.4px);background-size:18px 18px;
+  -webkit-mask-image:linear-gradient(115deg,transparent 25%,#000 95%);mask-image:linear-gradient(115deg,transparent 25%,#000 95%)}
+.ident{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font:500 .68rem var(--f-d);letter-spacing:.28em;text-transform:uppercase;color:var(--ink2)}
+.ident span+span::before{content:"//";margin-right:18px;color:var(--dim)}
+.ident i{flex:1 1 60px;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+h1{font:300 clamp(2.1rem,6.2vw,4rem)/1 var(--f-d);letter-spacing:.12em;text-transform:uppercase;margin:26px 0 0}
+h1 small{display:block;font:400 clamp(.72rem,1.5vw,.9rem)/1.4 var(--f-d);letter-spacing:.36em;color:var(--cyan);margin-top:14px}
+.lede{max-width:66ch;color:var(--ink2);margin:18px 0 0;font-size:1.02rem}
+.specs{display:flex;flex-wrap:wrap;gap:10px 28px;margin:22px 0 0;padding:14px 0 0;list-style:none;font:.86rem var(--f-m);border-top:1px solid var(--line)}
+.specs b{display:block;font:500 .6rem var(--f-d);letter-spacing:.24em;color:var(--dim);text-transform:uppercase;margin-bottom:2px}
+.index{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.index a{display:inline-flex;align-items:baseline;gap:8px;text-decoration:none;color:var(--ink);font:500 .72rem var(--f-d);letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:8px 11px;background:var(--glass)}
+.index a:hover{border-color:var(--line2);background:var(--glass2)}
+.index b{font:400 .72rem var(--f-m);color:var(--amber);letter-spacing:0}
+.key{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:18px 0 0;padding:0;font-size:.84rem;color:var(--ink2)}
+.tag{display:inline-block;font:400 .68rem/1.5 var(--f-m);letter-spacing:.06em;text-transform:uppercase;padding:0 6px;border:1px solid currentColor;margin-right:8px;white-space:nowrap;vertical-align:1px}
+.t-man{color:var(--cyan)} .t-cas{color:var(--ink)} .t-rep{color:var(--amber)} .t-unv{color:var(--crit)} .t-sim{color:var(--dim)}
+
+/* ---------- console grid ---------- */
+.console{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:30px;align-items:start}
+.console>*{min-width:0}
+@media (min-width:1000px){
+  .console{grid-template-columns:410px minmax(0,1fr);gap:28px}
+  .sim{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);max-height:calc(100vh - 24px);overflow-y:auto;scrollbar-width:thin}
+}
+.panel,.sim{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(126,190,225,.06),rgba(126,190,225,.018))}
+.panel{padding:22px 22px 20px;margin-bottom:22px;scroll-margin-top:14px}
+.panel::before,.panel::after,.sim::before,.sim::after{content:"";position:absolute;width:14px;height:14px;border:1px solid var(--line2);pointer-events:none}
+.panel::before,.sim::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.panel::after,.sim::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+@media (max-width:520px){.panel{padding:18px 14px}}
+.ph{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ph .pn{font:.84rem var(--f-m);color:var(--amber)}
+.ph h2{font:400 1.16rem/1.2 var(--f-d);letter-spacing:.2em;text-transform:uppercase;margin:0;text-wrap:balance}
+.ph::after{content:"";flex:1;height:1px;min-width:20px;background:linear-gradient(90deg,var(--line2),transparent)}
+h3{font:500 .78rem/1.3 var(--f-d);letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);margin:24px 0 10px}
+.lbl{font:500 .68rem var(--f-d);letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
+.note{color:var(--ink2);font-size:.92rem}
+.cols2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:6px 28px}
+.cols2>*{min-width:0}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:12px 0}
+.scroll{overflow-x:auto}
+
+/* ---------- controls ---------- */
+.chip{font:500 .72rem/1.2 var(--f-d);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--line2);padding:9px 12px;min-height:36px;cursor:pointer;border-radius:0;text-align:left}
+.chip:hover{background:var(--glass2)}
+.chip[aria-pressed="true"]{border-color:var(--amber);color:var(--amber);background:rgba(242,166,59,.09)}
+.chip.run{border-color:var(--amber);color:var(--ink)}
+.chip.run::before{content:"\25B8";color:var(--amber);margin-right:8px}
+.chip.sm{padding:6px 9px;min-height:30px;font-size:.66rem}
+.seg{display:inline-flex;flex-wrap:wrap}
+.seg .chip+.chip{margin-left:-1px}
+kbd{display:inline-grid;place-items:center;min-width:1.55em;height:1.55em;padding:0 .3em;border:1px solid var(--line2);border-radius:50%;font:600 .74em var(--f-d);color:var(--ink);vertical-align:1px}
+input[type=range]{width:100%;accent-color:var(--amber);margin:6px 0 2px}
+input[type=search]{background:var(--deep);border:1px solid var(--line2);padding:8px 10px;min-height:36px;min-width:0;width:170px;color:var(--ink);font:.9rem var(--f-b)}
+
+/* ---------- facts, checks, tables ---------- */
+.facts{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:9px}
+.facts li{display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;align-items:baseline;font-size:.95rem}
+.facts .tag{margin:0;justify-self:start}
+@media (max-width:520px){.facts li{grid-template-columns:minmax(0,1fr);gap:2px}}
+.checks{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px;font-size:.93rem}
+.checks li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:10px;align-items:baseline}
+.checks .s{font:.72rem var(--f-m);letter-spacing:.04em}
+.checks .ok .s{color:var(--good)} .checks .no .s{color:var(--crit)}
+.checks .no{color:var(--ink)} .checks .ok{color:var(--ink2)}
+.result{font:.9rem var(--f-m);color:var(--ink);border-left:2px solid var(--amber);padding:6px 10px;margin:12px 0;min-height:2.2em;background:rgba(242,166,59,.06)}
+.tbl{width:100%;border-collapse:collapse;font-size:.9rem;min-width:430px}
+.tbl th{font:500 .64rem var(--f-d);letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);text-align:left;border-bottom:1px solid var(--line2);padding:6px 8px;white-space:nowrap}
+.tbl td{border-bottom:1px solid var(--line);padding:7px 8px;vertical-align:top}
+.tbl td.n,.tbl th.n{font-family:var(--f-m);text-align:right;white-space:nowrap}
+.tbl tr.hot td{background:rgba(242,166,59,.09)}
+.tbl tr.hot td:first-child{box-shadow:inset 2px 0 0 var(--amber)}
+.fig{margin:0}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:.86rem;color:var(--ink2);margin-top:6px;max-width:60ch}
+
+/* ---------- simulator ---------- */
+.sim{padding:12px 14px 14px}
+.simhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.simhead .env{color:var(--amber);font-family:var(--f-m);letter-spacing:.08em;font-size:.7rem}
+.watchfig{margin:2px auto 0;max-width:372px}
+@media (min-width:1000px) and (max-height:860px){.watchfig{max-width:300px}}
+#watch{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.s-hi{stop-color:var(--case-hi)}.s-mid{stop-color:var(--case-mid)}.s-lo{stop-color:var(--case-lo)}.s-edge{stop-color:var(--edge)}.s-glare{stop-color:var(--glare)}.s-shade{stop-color:var(--shade)}
+.w-edge,.w-groove{fill:none;stroke-width:1}
+.w-groove{stroke-width:.9}
+.w-case{stroke:var(--line2);stroke-width:1.3;stroke-linejoin:round}
+.w-bevel{fill:none;stroke-width:1;stroke-linejoin:round}
+.w-pit{fill:var(--case-lo);stroke-width:1.1}
+.w-bezel{stroke-width:1.3;stroke-linejoin:round}
+.w-face{fill:var(--face);stroke:var(--line2);stroke-width:1}
+.w-accent{fill:none;stroke:var(--amber);stroke-opacity:.6;stroke-width:1}
+.w-recess{fill:var(--case-lo);stroke:var(--line);stroke-width:.8}
+.w-inset,.w-glare{pointer-events:none}
+.w-cap{font:500 8px var(--f-d);letter-spacing:.3em;fill:var(--dim)}
+.w-leg text{font:600 8px var(--f-b);letter-spacing:.07em;fill:var(--ink2)}
+.w-leg path{fill:var(--ink2)}
+.w-tone{font:10px var(--f-m);fill:var(--amber);opacity:0}
+.beeping .w-tone{opacity:1;animation:blink .5s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.lcd-bg{fill:var(--lcd)}
+.blank .lcd-bg{fill:#99a394}
+.lcd-glow{opacity:0;transition:opacity .7s ease-out}
+.lit .lcd-glow{opacity:1;transition:opacity .08s}
+.lcd-frame{fill:none;stroke:var(--seg);stroke-opacity:.8;stroke-width:1.2}
+.lcd-rule{fill:none;stroke:var(--seg);stroke-opacity:.55;stroke-width:.8}
+.seg7,.dot,.ind{color:var(--seg);fill:currentColor;opacity:.04}
+.dot{opacity:.03}
+.ind{font-family:var(--f-b);font-weight:600;letter-spacing:.04em}
+.seg7.on,.dot.on,.ind.on{opacity:.93}
+.btn{cursor:pointer;outline:none;touch-action:none}
+.btn .hit{fill:transparent}
+.btn .cap{transition:transform .06s}
+.btn .cap rect{stroke:var(--line2);stroke-width:1.1}
+.btn .caph{fill:none;stroke:var(--glare);stroke-opacity:.38;stroke-width:1;stroke-linecap:round}
+.btn .collar{fill:var(--case-mid);stroke:var(--line2);stroke-width:1}
+.btn:hover .cap rect{fill:var(--cap-hover)}
+.btn.held .cap rect,.btn.demo .cap rect{fill:var(--amber);stroke:var(--amber)}
+.btn.bl.held .cap,.btn.bl.demo .cap{transform:translateX(3px)}
+.btn.br.held .cap,.btn.br.demo .cap{transform:translateX(-3px)}
+.btn .badge{fill:var(--void);stroke:var(--line2);stroke-width:1}
+.btn .blt{font:600 11px var(--f-d);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+.btn .ring{fill:none;stroke:var(--amber);stroke-width:2.6;stroke-dasharray:81.7;stroke-dashoffset:81.7}
+.btn:focus-visible .badge{stroke:var(--amber);stroke-width:2.2}
+.btn.demo .badge{stroke:var(--amber)}
+.readout{border-top:1px solid var(--line);margin-top:6px;padding-top:10px;min-height:70px}
+#st-title{font:500 .8rem var(--f-d);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+#st-detail{font-size:.9rem;color:var(--ink2);margin-top:2px}
+#demoline{font:.76rem/1.5 var(--f-m);color:var(--dim);margin-top:8px;display:flex;flex-wrap:wrap;gap:2px 6px;align-items:center}
+#demoline .tok{border:1px solid var(--line);padding:0 5px;color:var(--ink2)}
+#demoline .tok.cur{border-color:var(--amber);color:var(--amber)}
+#demoline .ttl{color:var(--amber);margin-right:4px;text-transform:uppercase;letter-spacing:.06em}
+.acts{display:grid;gap:6px;margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+.act{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:start}
+.act .k{width:24px;height:24px;border:1px solid var(--line2);border-radius:50%;display:grid;place-items:center;font:600 .72rem var(--f-d);margin-top:4px}
+.act .ops{display:flex;flex-wrap:wrap;gap:6px}
+.op{flex:1 1 128px;font:500 .84rem/1.25 var(--f-b);text-align:left;color:var(--ink);background:rgba(116,217,240,.07);border:1px solid var(--line);padding:5px 9px 6px;min-height:40px;cursor:pointer;border-radius:0}
+.op b{display:block;font:500 .6rem var(--f-d);letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:1px}
+.op i{display:block;font-style:normal;font-size:.76rem;color:var(--warn)}
+.op:hover{border-color:var(--line2);background:rgba(116,217,240,.14)}
+.op.none{border-style:dashed;color:var(--dim);background:none;cursor:default}
+.op.none b{color:var(--dim)}
+.op.blocked{border-color:rgba(242,179,59,.5)}
+.tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.log{list-style:none;margin:10px 0 0;padding:9px 0 0;border-top:1px solid var(--line);font:.76rem/1.4 var(--f-m);color:var(--dim);min-height:5.6em}
+.log li{padding-left:14px;position:relative;margin-bottom:3px}
+.log li::before{content:"\203A";position:absolute;left:0;color:var(--amber)}
+.log li:first-child{color:var(--ink)}
+.hint{font-size:.8rem;color:var(--dim);margin:8px 0 0}
+.jump{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;text-decoration:none;font:500 .7rem var(--f-d);letter-spacing:.18em;text-transform:uppercase;color:var(--void);background:var(--amber);padding:11px 14px}
+@media (min-width:1000px){.jump{display:none}}
+
+/* ---------- mode loop, flows ---------- */
+.loop,.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px}
+.node,.state{font:400 .86rem/1.3 var(--f-b);color:var(--ink);background:var(--glass);border:1px solid var(--line2);padding:8px 12px;min-height:54px;cursor:pointer;text-align:left;border-radius:0;flex:1 1 118px}
+.node b,.state b{display:block;font:500 .7rem var(--f-d);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+.node:hover,.state:hover{background:var(--glass2)}
+.node[aria-current="true"],.state[aria-current="true"]{border-color:var(--amber);background:rgba(242,166,59,.1)}
+.node[aria-current="true"] b,.state[aria-current="true"] b{color:var(--amber)}
+.arr{align-self:center;font:.7rem var(--f-m);color:var(--dim);white-space:nowrap}
+.flow .arr{white-space:normal;flex:0 1 150px;text-align:center}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,235px),1fr));gap:6px}
+.lg{display:grid;grid-template-columns:54px minmax(0,1fr);gap:10px;align-items:center;text-align:left;background:none;border:1px solid var(--line);padding:7px 10px;cursor:pointer;color:var(--ink2);font:400 .88rem/1.3 var(--f-b);border-radius:0;min-height:44px}
+.lg b{font:400 .78rem var(--f-m);background:var(--lcd);color:var(--seg);padding:2px 0;text-align:center}
+.lg:hover{border-color:var(--line2);color:var(--ink)}
+
+.lcdmap svg{max-width:340px}
+.m-out{fill:rgba(168,178,161,.07);stroke:var(--line2);stroke-width:1}
+.m-z{fill:rgba(116,217,240,.07);stroke:var(--cyan);stroke-width:1;stroke-dasharray:3 3}
+.m-i{font:600 8px var(--f-b);fill:var(--dim)}
+.m-n circle{fill:var(--void);stroke:var(--amber);stroke-width:1}
+.m-n text{font:10px var(--f-m);fill:var(--amber);text-anchor:middle;dominant-baseline:central}
+.zones{margin:0;padding-left:1.4em;display:grid;gap:7px;font-size:.93rem;color:var(--ink2)}
+.zones li::marker{color:var(--amber);font-family:var(--f-m)}
+.zones b{color:var(--ink);font-weight:500;margin-right:4px}
+
+/* ---------- solar ---------- */
+.ladder{display:grid;gap:6px}
+.rung{display:grid;grid-template-columns:54px 96px minmax(0,1fr);gap:10px;align-items:center;text-align:left;background:var(--glass);border:1px solid var(--line);padding:8px 12px;cursor:pointer;color:var(--ink2);font:400 .92rem/1.35 var(--f-b);border-radius:0;min-height:48px}
+.rung .lv{font:1rem var(--f-m);color:var(--ink)}
+.rung .st{font:.72rem var(--f-m);letter-spacing:.04em;text-transform:uppercase}
+.st.good{color:var(--good)} .st.warn{color:var(--warn)} .st.crit{color:var(--crit)}
+.rung:hover{border-color:var(--line2)}
+.rung[aria-pressed="true"]{border-color:var(--amber);background:rgba(242,166,59,.09);color:var(--ink);box-shadow:inset 3px 0 0 var(--amber)}
+@media (max-width:520px){.rung{grid-template-columns:44px minmax(0,1fr)}.rung .ds{grid-column:1/-1}}
+.bars{display:grid;gap:9px;margin:6px 0 4px}
+.barrow{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;align-items:center}
+.barrow .bn{font-size:.9rem}
+.barrow .bn small{display:block;font:.72rem var(--f-m);color:var(--dim)}
+.bt{display:flex;align-items:center;gap:8px;border-left:1px solid var(--line2);min-width:0}
+.bt i{display:block;height:10px;background:var(--cyan);border-radius:0 4px 4px 0;min-width:3px;flex:0 0 auto}
+.bt b{font:400 .84rem var(--f-m);color:var(--ink);white-space:nowrap}
+.barrow:hover .bt i{background:var(--ink)}
+@media (max-width:520px){.barrow{grid-template-columns:112px minmax(0,1fr)}}
+
+/* ---------- light ---------- */
+#gauge .g-line{fill:none;stroke:var(--line2);stroke-width:1}
+#gauge .g-arc{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:2 4}
+#gauge .g-zone{fill:rgba(242,166,59,.12);stroke:none}
+#gauge .g-ray{stroke:var(--amber);stroke-width:1.2}
+#gauge text{font:10px var(--f-m);fill:var(--ink2)}
+#gauge .g-arm rect{fill:var(--cap);stroke:var(--ink);stroke-width:1.2}
+#gauge .g-arm .g-glass{fill:var(--lcd);stroke:none}
+#gauge.lit .g-arm .g-glass{fill:#f4ffff}
+#gauge .g-beam{fill:rgba(220,245,250,.22);opacity:0}
+#gauge.lit .g-beam{opacity:1}
+output{font-family:var(--f-m);color:var(--amber);letter-spacing:0;margin-left:8px}
+
+#night .n-ax{fill:none;stroke:var(--line2);stroke-width:1}
+#night .n-txt{font:9.5px var(--f-m);fill:var(--ink2)}
+#night .n-m circle{fill:var(--void);stroke:var(--line2);stroke-width:1.2}
+#night .n-m text{font:10px var(--f-m);fill:var(--ink);text-anchor:middle;dominant-baseline:central}
+#night .n-m.ok circle{fill:var(--good);stroke:var(--good)}
+#night .n-m.ok text{fill:var(--void)}
+#night .n-m.fail circle{stroke:var(--crit)}
+#night .n-m.fail text{fill:var(--crit)}
+#night .n-m.skip{opacity:.4}
+#night .n-m.skip circle{stroke-dasharray:2 3}
+
+/* ---------- settings rail ---------- */
+.rail li.cur .rn{color:var(--amber)}
+.rail{list-style:none;margin:10px 0 0;padding:0;border-left:1px solid var(--line2)}
+.rail li{position:relative;margin:0}
+.rail li::before{content:"";position:absolute;left:-4px;top:19px;width:7px;height:7px;background:var(--void);border:1px solid var(--line2);transform:rotate(45deg)}
+.rail li.open::before{background:var(--amber);border-color:var(--amber)}
+.rhead{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 8px 9px 16px;cursor:pointer;color:var(--ink);min-height:44px;border-radius:0}
+.rhead:hover{background:var(--glass)}
+.rhead .rc{font:.74rem var(--f-m);color:var(--dim)}
+.rhead .rn{font:500 .8rem var(--f-d);letter-spacing:.16em;text-transform:uppercase}
+.rhead .rv{font:.86rem var(--f-m);color:var(--amber);white-space:nowrap}
+.rdet{padding:10px 8px 14px 16px;border-bottom:1px solid var(--line);background:var(--glass)}
+.rdet p{margin:0 0 6px;font-size:.94rem}
+.rdet .k{color:var(--ink2)}
+
+/* ---------- world time ---------- */
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:6px}
+.slot{text-align:left;background:var(--glass);border:1px solid var(--line);padding:8px 10px;cursor:pointer;color:var(--ink);border-radius:0;min-height:74px;font:400 .86rem/1.3 var(--f-b)}
+.slot b{display:block;font:.7rem var(--f-m);color:var(--dim)}
+.slot .tm{display:block;font:1.25rem/1.2 var(--f-m);color:var(--ink)}
+.slot .mt{display:block;font:.72rem var(--f-m);color:var(--ink2)}
+.slot:hover{border-color:var(--line2)}
+.slot[aria-pressed="true"]{border-color:var(--amber);box-shadow:inset 0 2px 0 var(--amber)}
+.cities{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:4px;margin-top:8px}
+.city{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;text-align:left;background:none;border:1px solid var(--line);padding:6px 9px;cursor:pointer;color:var(--ink);font:500 .78rem/1.3 var(--f-d);letter-spacing:.08em;border-radius:0;min-height:44px}
+.city .of{font:.76rem var(--f-m);color:var(--ink2);letter-spacing:0}
+.city .tx{grid-column:1/-1;font:.68rem var(--f-m);color:var(--dim);letter-spacing:0}
+.city .tx.has{color:var(--cyan)}
+.city:hover{border-color:var(--line2);background:var(--glass)}
+.city.home{border-color:var(--amber)}
+
+details.fold{border-top:1px solid var(--line);margin-top:18px}
+details.fold summary{cursor:pointer;padding:12px 0 4px;font:500 .78rem/1.3 var(--f-d);letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+
+/* ---------- cards ---------- */
+.cards{display:grid;gap:14px}
+.card{border:1px solid var(--line);padding:14px 16px 16px;background:rgba(5,9,14,.35);min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:10px 28px}
+.card>*{min-width:0}
+.card h3{margin-top:0}
+.card .facts{margin-top:0}
+.card .facts li{grid-template-columns:minmax(0,1fr);gap:2px}
+.seq b{font:500 .6rem var(--f-d);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);flex:1 0 100%}
+.steps{margin:0 0 4px;padding-left:1.2em;font-size:.95rem;display:grid;gap:5px}
+.seq{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font:.8rem var(--f-m);color:var(--ink2);margin:8px 0}
+.seq span{white-space:nowrap}
+.seq em{font-style:normal;color:var(--dim)}
+.minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px}
+.mini{border-top:1px solid var(--line2);padding:10px 0 0}
+.mini h3{margin:0 0 6px}
+.mini p{font-size:.94rem;margin-bottom:6px}
+.src{margin:0;padding-left:1.2em;font-size:.93rem;display:grid;gap:7px}
+.src span{color:var(--ink2)}
+footer{margin-top:28px;font-size:.82rem;color:var(--dim);max-width:80ch}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+  <div class="ident"><span>Ref 3495</span><span>GW-M5610U</span><span>Unofficial field guide</span><i></i></div>
+  <h1>GW-M5610U<small>How every function works</small></h1>
+  <p class="lede">The watch on this page follows the button logic in Casio's operation guide. Press its buttons, or hold them, and the panel under it lists what each button does on the current screen. The sections explain each feature, including behaviour the manual leaves out.</p>
+  <ul class="specs" aria-label="Key specifications">
+    <li><b>Case</b>46.7 × 43.2 × 12.7 mm</li>
+    <li><b>Mass</b>52 g</li>
+    <li><b>Water</b>20 bar</li>
+    <li><b>Glass</b>Mineral</li>
+    <li><b>Power</b>Solar, rechargeable cell</li>
+    <li><b>Radio</b>6 transmitters, 5 signals</li>
+    <li><b>Drift without sync</b>±15 s / month</li>
+  </ul>
+  <nav class="index" aria-label="Sections">
+    <a href="#basics"><b>01</b>Buttons and modes</a>
+    <a href="#sync"><b>02</b>Radio sync</a>
+    <a href="#solar"><b>03</b>Solar power</a>
+    <a href="#light"><b>04</b>Light</a>
+    <a href="#setup"><b>05</b>Settings</a>
+    <a href="#world"><b>06</b>World time</a>
+    <a href="#timing"><b>07</b>Alarm, stopwatch, timer</a>
+    <a href="#care"><b>08</b>Care and limits</a>
+    <a href="#tests"><b>09</b>Test screens</a>
+    <a href="#sources"><b>10</b>Sources</a>
+  </nav>
+  <ul class="key" aria-label="Where each statement comes from">
+    <li><span class="tag t-man">Manual</span>Casio Operation Guide 3495</li>
+    <li><span class="tag t-cas">Casio</span>Casio product data</li>
+    <li><span class="tag t-rep">Report</span>Owners and reviewers</li>
+    <li><span class="tag t-unv">Unverified</span>Not confirmed for this module</li>
+    <li><span class="tag t-sim">Sim</span>Simulator shortcut or assumption</li>
+  </ul>
+</header>
+
+<div class="console">
+<aside class="sim" id="sim" aria-label="Watch simulator">
+  <div class="simhead"><span class="lbl">Live unit</span><span class="lbl env" id="envline">Charge H · Bright</span></div>
+  <figure class="watchfig" id="watchfig">
+    <svg id="watch" viewBox="-10 0 420 440" role="group" aria-label="Drawing of the watch with four side buttons and its display">
+      <defs>
+        <linearGradient id="litg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#f6ffff" stop-opacity=".95"/>
+          <stop offset=".5" stop-color="#d8f3f6" stop-opacity=".75"/>
+          <stop offset="1" stop-color="#bfe0e2" stop-opacity=".45"/>
+        </linearGradient>
+        <linearGradient id="g-case" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-hi"/><stop offset=".5" class="s-mid"/><stop offset="1" class="s-lo"/></linearGradient>
+        <linearGradient id="g-well" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s-lo"/><stop offset="1" class="s-mid"/></linearGradient>
+        <linearGradient id="g-strap-a" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="84"><stop offset="0" class="s-mid" stop-opacity="0"/><stop offset=".45" class="s-mid" stop-opacity=".9"/><stop offset="1" class="s-hi"/></linearGradient>
+        <linearGradient id="g-strap-b" gradientUnits="userSpaceOnUse" x1="0" y1="440" x2="0" y2="356"><stop offset="0" class="s-mid" stop-opacity="0"/><stop offset=".45" class="s-mid" stop-opacity=".9"/><stop offset="1" class="s-mid"/></linearGradient>
+        <linearGradient id="g-edge-a" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="70"><stop offset="0" class="s-edge" stop-opacity="0"/><stop offset=".75" class="s-edge" stop-opacity=".5"/></linearGradient>
+        <linearGradient id="g-edge-b" gradientUnits="userSpaceOnUse" x1="0" y1="440" x2="0" y2="370"><stop offset="0" class="s-edge" stop-opacity="0"/><stop offset=".75" class="s-edge" stop-opacity=".5"/></linearGradient>
+        <linearGradient id="g-cap-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="s-hi"/><stop offset="1" class="s-mid"/></linearGradient>
+        <linearGradient id="g-cap-r" x1="1" y1="0" x2="0" y2="0"><stop offset="0" class="s-hi"/><stop offset="1" class="s-mid"/></linearGradient>
+        <linearGradient id="g-glare" gradientUnits="userSpaceOnUse" x1="66" y1="110" x2="220.2" y2="184.3"><stop offset="0" class="s-glare" stop-opacity=".12"/><stop offset=".6" class="s-glare" stop-opacity=".035"/><stop offset="1" class="s-glare" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g-inset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s-shade" stop-opacity=".3"/><stop offset=".07" class="s-shade" stop-opacity=".09"/><stop offset=".17" class="s-shade" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g-inset-l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" class="s-shade" stop-opacity=".14"/><stop offset=".07" class="s-shade" stop-opacity="0"/></linearGradient>
+        <linearGradient id="g-rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-shade" stop-opacity=".9"/><stop offset=".45" class="s-shade" stop-opacity=".25"/><stop offset=".55" class="s-glare" stop-opacity=".1"/><stop offset="1" class="s-glare" stop-opacity=".45"/></linearGradient>
+        <linearGradient id="g-bevel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s-glare" stop-opacity=".36"/><stop offset=".5" class="s-glare" stop-opacity=".05"/><stop offset="1" class="s-shade" stop-opacity=".6"/></linearGradient>
+        <linearGradient id="g-chan-a" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="50"><stop offset="0" class="s-shade" stop-opacity="0"/><stop offset=".7" class="s-shade" stop-opacity=".34"/></linearGradient>
+        <linearGradient id="g-chan-b" gradientUnits="userSpaceOnUse" x1="0" y1="440" x2="0" y2="390"><stop offset="0" class="s-shade" stop-opacity="0"/><stop offset=".7" class="s-shade" stop-opacity=".34"/></linearGradient>
+        <linearGradient id="g-shade-a" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="50"><stop offset="0" class="s-shade" stop-opacity="0"/><stop offset=".7" class="s-shade" stop-opacity=".75"/></linearGradient>
+        <linearGradient id="g-shade-b" gradientUnits="userSpaceOnUse" x1="0" y1="440" x2="0" y2="390"><stop offset="0" class="s-shade" stop-opacity="0"/><stop offset=".7" class="s-shade" stop-opacity=".75"/></linearGradient>
+        <clipPath id="c-face"><rect x="66" y="110" width="268" height="220" rx="22"/></clipPath>
+      </defs>
+      <path fill="url(#g-strap-a)" d="M96 84C101 64 114 56 116 38L118 0H282L284 38C286 56 299 64 304 84Z"/>
+      <path class="w-edge" stroke="url(#g-edge-a)" d="M96 84C101 64 114 56 116 38L118 0M304 84C299 64 286 56 284 38L282 0"/>
+      <path fill="url(#g-chan-a)" d="M150 0V36Q150 47 161 47H239Q250 47 250 36V0Z"/>
+      <path class="w-edge" stroke="url(#g-shade-a)" d="M150.6 0V36Q150.6 46.4 161 46.4"/>
+      <path class="w-edge" stroke="url(#g-edge-a)" d="M249.4 0V36Q249.4 46.4 239 46.4H161"/>
+      <path class="w-groove" stroke="url(#g-shade-a)" d="M117.6 14H142M116.9 28H142M115.8 42H142M258 14H282.4M258 28H283.1M258 42H284.2"/>
+      <path class="w-groove" stroke="url(#g-edge-a)" d="M117.6 15.3H142M116.9 29.3H142M115.8 43.3H142M258 15.3H282.4M258 29.3H283.1M258 43.3H284.2"/>
+      <path fill="url(#g-strap-b)" d="M96 356C101 376 114 384 116 402L118 440H282L284 402C286 384 299 376 304 356Z"/>
+      <path class="w-edge" stroke="url(#g-edge-b)" d="M96 356C101 376 114 384 116 402L118 440M304 356C299 376 286 384 284 402L282 440"/>
+      <path fill="url(#g-chan-b)" d="M150 440V404Q150 393 161 393H239Q250 393 250 404V440Z"/>
+      <path class="w-edge" stroke="url(#g-shade-b)" d="M150.6 440V404Q150.6 393.6 161 393.6H239"/>
+      <path class="w-edge" stroke="url(#g-edge-b)" d="M249.4 440V404Q249.4 396 244 394.4"/>
+      <path class="w-groove" stroke="url(#g-shade-b)" d="M117.6 426H142M116.9 412H142M115.8 398H142M258 426H282.4M258 412H283.1M258 398H284.2"/>
+      <path class="w-groove" stroke="url(#g-edge-b)" d="M117.6 427.3H142M116.9 413.3H142M115.8 399.3H142M258 427.3H282.4M258 413.3H283.1M258 399.3H284.2"/>
+      <path class="w-case" fill="url(#g-case) #0d151d" d="M128 60H272Q296 60 314.9 74.8L341.1 95.2Q360 110 360 134V306Q360 330 341.1 344.8L314.9 365.2Q296 380 272 380H128Q104 380 85.1 365.2L58.9 344.8Q40 330 40 306V134Q40 110 58.9 95.2L85.1 74.8Q104 60 128 60Z"/>
+      <path class="w-bevel" stroke="url(#g-bevel)" d="M125.7 65H274.3Q294.3 65 310.1 77.3L339.2 100.1Q355 112.4 355 132.4V307.6Q355 327.6 339.2 339.9L310.1 362.7Q294.3 375 274.3 375H125.7Q105.7 375 89.9 362.7L60.8 339.9Q45 327.6 45 307.6V132.4Q45 112.4 60.8 100.1L89.9 77.3Q105.7 65 125.7 65Z"/>
+      <g class="w-pit" stroke="url(#g-rim)">
+        <rect x="42" y="143" width="10" height="54" rx="4.5"/><rect x="42" y="243" width="10" height="54" rx="4.5"/>
+        <rect x="348" y="143" width="10" height="54" rx="4.5"/><rect x="348" y="243" width="10" height="54" rx="4.5"/>
+        <rect x="43.5" y="208.4" width="8" height="3.8" rx="1.9"/><rect x="43.5" y="218.1" width="8" height="3.8" rx="1.9"/><rect x="43.5" y="227.8" width="8" height="3.8" rx="1.9"/>
+        <rect x="348.5" y="208.4" width="8" height="3.8" rx="1.9"/><rect x="348.5" y="218.1" width="8" height="3.8" rx="1.9"/><rect x="348.5" y="227.8" width="8" height="3.8" rx="1.9"/>
+      </g>
+      <path class="w-bezel" fill="url(#g-well) #070b10" stroke="url(#g-rim)" d="M128 78H272Q288 78 300.7 87.7L331.3 111.3Q344 121 344 137V303Q344 319 331.3 328.7L300.7 352.3Q288 362 272 362H128Q112 362 99.3 352.3L68.7 328.7Q56 319 56 303V137Q56 121 68.7 111.3L99.3 87.7Q112 78 128 78Z"/>
+      <rect class="w-pit" stroke="url(#g-rim)" x="62" y="106" width="276" height="228" rx="25.5"/>
+      <rect class="w-face" x="66" y="110" width="268" height="220" rx="22"/>
+      <rect class="w-accent" x="72" y="116" width="256" height="208" rx="17"/>
+      <text class="w-cap" x="200" y="99" text-anchor="middle">MODULE 3495</text>
+      <text class="w-cap" x="200" y="349" text-anchor="middle">SOLAR · RADIO-CONTROLLED</text>
+      <g class="w-leg" aria-hidden="true">
+        <path d="M227 128l5-3v6z"/><text x="236" y="131">SPLIT · RESET</text>
+        <text x="291" y="143" text-anchor="end">LIGHT</text><path d="M299 140l-5-3v6z"/>
+        <text transform="translate(83 186) rotate(-90)" text-anchor="middle">ADJUST</text>
+        <text transform="translate(83 262) rotate(-90)" text-anchor="middle">MODE</text>
+        <text transform="translate(317 186) rotate(90)" text-anchor="middle">SET [−]</text>
+        <text transform="translate(317 262) rotate(90)" text-anchor="middle">SET [+]</text>
+        <text x="117" y="301" text-anchor="middle">SNZ</text><text x="145" y="301" text-anchor="middle">ALM</text><text x="173" y="301" text-anchor="middle">SIG</text>
+        <text x="225" y="301" text-anchor="middle">L</text><text x="239" y="301" text-anchor="middle">·</text><text x="253" y="301" text-anchor="middle">M</text><text x="267" y="301" text-anchor="middle">·</text><text x="281" y="301" text-anchor="middle">H</text>
+        <text x="291" y="313" text-anchor="end">RECEIVING</text><path d="M299 310l-5-3v6z"/>
+        <text x="291" y="324" text-anchor="end">START · STOP</text><path d="M299 321l-5-3v6z"/>
+      </g>
+      <rect class="w-recess" x="89" y="147" width="222" height="144" rx="8"/>
+      <g id="lcd" transform="translate(92 150)"></g>
+      <rect class="w-inset" x="92" y="150" width="216" height="138" rx="5" fill="url(#g-inset)"/>
+      <rect class="w-inset" x="92" y="150" width="216" height="138" rx="5" fill="url(#g-inset-l)"/>
+      <path class="w-glare" fill="url(#g-glare)" clip-path="url(#c-face)" d="M66 110H256L150 330H66Z"/>
+      <text class="w-tone" x="-4" y="404">((•)) TONE</text>
+      <g class="btn bl" data-b="A" role="button" tabindex="0" aria-label="Button A, upper left: adjust">
+        <rect class="hit" x="-10" y="138" width="68" height="64"/>
+        <g class="cap"><rect x="24" y="151" width="17" height="38" rx="6" fill="url(#g-cap-l) #121c25"/><path class="caph" d="M28.5 158v24"/></g>
+        <rect class="collar" x="37" y="146" width="9" height="48" rx="3.5"/>
+        <circle class="ring" cx="9" cy="170" r="13" transform="rotate(-90 9 170)"/><circle class="badge" cx="9" cy="170" r="10"/><text class="blt" x="9" y="170">A</text>
+      </g>
+      <g class="btn bl" data-b="C" role="button" tabindex="0" aria-label="Button C, lower left: mode">
+        <rect class="hit" x="-10" y="238" width="68" height="64"/>
+        <g class="cap"><rect x="24" y="251" width="17" height="38" rx="6" fill="url(#g-cap-l) #121c25"/><path class="caph" d="M28.5 258v24"/></g>
+        <rect class="collar" x="37" y="246" width="9" height="48" rx="3.5"/>
+        <circle class="ring" cx="9" cy="270" r="13" transform="rotate(-90 9 270)"/><circle class="badge" cx="9" cy="270" r="10"/><text class="blt" x="9" y="270">C</text>
+      </g>
+      <g class="btn br" data-b="B" role="button" tabindex="0" aria-label="Button B, upper right: light">
+        <rect class="hit" x="342" y="138" width="68" height="64"/>
+        <g class="cap"><rect x="359" y="151" width="17" height="38" rx="6" fill="url(#g-cap-r) #121c25"/><path class="caph" d="M371.5 158v24"/></g>
+        <rect class="collar" x="354" y="146" width="9" height="48" rx="3.5"/>
+        <circle class="ring" cx="391" cy="170" r="13" transform="rotate(-90 391 170)"/><circle class="badge" cx="391" cy="170" r="10"/><text class="blt" x="391" y="170">B</text>
+      </g>
+      <g class="btn br" data-b="D" role="button" tabindex="0" aria-label="Button D, lower right: start, stop, receive">
+        <rect class="hit" x="342" y="238" width="68" height="64"/>
+        <g class="cap"><rect x="359" y="251" width="17" height="38" rx="6" fill="url(#g-cap-r) #121c25"/><path class="caph" d="M371.5 258v24"/></g>
+        <rect class="collar" x="354" y="246" width="9" height="48" rx="3.5"/>
+        <circle class="ring" cx="391" cy="270" r="13" transform="rotate(-90 391 270)"/><circle class="badge" cx="391" cy="270" r="10"/><text class="blt" x="391" y="270">D</text>
+      </g>
+    </svg>
+    <figcaption class="sr">Interactive drawing of the watch. The case and display are an approximation, not a copy of the real watch.</figcaption>
+  </figure>
+  <div class="readout">
+    <div id="st-title">Timekeeping</div>
+    <div id="st-detail"></div>
+    <div id="demoline" hidden></div>
+  </div>
+  <div class="acts" id="acts" aria-label="What each button does on this screen">
+    <div class="act"><span class="k">A</span><div class="ops"><button class="op" id="op-A-p"></button><button class="op" id="op-A-h"></button></div></div>
+    <div class="act"><span class="k">B</span><div class="ops"><button class="op" id="op-B-p"></button><button class="op" id="op-B-h"></button></div></div>
+    <div class="act"><span class="k">C</span><div class="ops"><button class="op" id="op-C-p"></button><button class="op" id="op-C-h"></button></div></div>
+    <div class="act"><span class="k">D</span><div class="ops"><button class="op" id="op-D-p"></button><button class="op" id="op-D-h"></button></div></div>
+    <div class="act" id="act-combo" hidden><span class="k">+</span><div class="ops"><button class="op" id="op-combo"></button></div></div>
+  </div>
+  <div class="tools">
+    <button class="chip sm" id="snd" aria-pressed="false">Sound off</button>
+    <button class="chip sm" id="rst">Reset watch</button>
+    <button class="chip sm" id="stopdemo" hidden>Stop demo</button>
+  </div>
+  <ol class="log" id="log" aria-live="polite" aria-label="Event log"></ol>
+  <p class="hint">Press or press and hold the watch buttons. Keyboard: A, B, C, D. The cards above do the same with one tap.</p>
+</aside>
+
+<main>
+<section class="panel" id="basics">
+  <div class="ph"><span class="pn">01</span><h2>Buttons and modes</h2></div>
+  <p>There are four buttons. C moves through five modes in a fixed loop. Holding A for two seconds opens the setting screen of the mode that is showing. Stopwatch is the exception: it has nothing to set.</p>
+  <h3>Mode loop</h3>
+  <div class="loop" id="loop">
+    <button class="node" data-mode="TK"><b>Day of week</b>Timekeeping</button><span class="arr" aria-hidden="true">C ▸</span>
+    <button class="node" data-mode="WT"><b>WT</b>World Time</button><span class="arr" aria-hidden="true">C ▸</span>
+    <button class="node" data-mode="AL"><b>AL</b>Alarm</button><span class="arr" aria-hidden="true">C ▸</span>
+    <button class="node" data-mode="ST"><b>ST</b>Stopwatch</button><span class="arr" aria-hidden="true">C ▸</span>
+    <button class="node" data-mode="TR"><b>TR</b>Timer</button>
+  </div>
+  <p class="note" style="margin-top:10px">The upper line is what the top left of the display shows in that mode. C from Timer goes back to Timekeeping. Hold C for one second in any mode to go straight there. Select a mode here to jump the simulator to it.</p>
+  <h3>What each button is for</h3>
+  <div class="scroll"><table class="tbl" style="min-width:0">
+    <thead><tr><th>Button</th><th>Normal screens</th><th>Setting screens</th></tr></thead>
+    <tbody>
+      <tr><td style="white-space:nowrap"><kbd>A</kbd> upper left</td><td>Hold 2 s: open settings. Alarm: on or off. Stopwatch: split and reset. Timer: reset when paused.</td><td>Save and exit</td></tr>
+      <tr><td><kbd>B</kbd> upper right</td><td>Light. Hold 3 s in Timekeeping: auto light on or off.</td><td>Value down</td></tr>
+      <tr><td><kbd>C</kbd> lower left</td><td>Next mode. Hold 1 s: Timekeeping.</td><td>Next item</td></tr>
+      <tr><td><kbd>D</kbd> lower right</td><td>Start and stop, next item, last sync result. Hold 2 s in Timekeeping: receive now.</td><td>Value up, or switch</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Reading the display</h3>
+  <div class="cols2">
+    <figure class="fig lcdmap">
+      <svg viewBox="0 0 240 150" role="img" aria-label="Map of the display. Zone 1 is at the top left, zone 2 is the window at the top right, zone 3 is the main digits, zone 4 is the small digits at the lower right and zone 5 is the row of bars along the bottom.">
+        <rect class="m-out" x="6" y="6" width="228" height="138" rx="6"/>
+        <text class="m-i" x="14" y="23">RCVD</text><text class="m-i" x="14" y="34">PS</text><text class="m-i" x="15" y="80">P</text>
+        <text class="m-i" x="196" y="59">DST</text><text class="m-i" x="208" y="70">LT</text>
+        <rect class="m-z" x="48" y="14" width="46" height="28"/>
+        <rect class="m-z" x="118" y="12" width="106" height="32" rx="3"/>
+        <rect class="m-z" x="32" y="62" width="140" height="56"/>
+        <rect class="m-z" x="178" y="84" width="46" height="34"/>
+        <rect class="m-z" x="14" y="126" width="212" height="10"/>
+        <g class="m-n"><circle cx="71" cy="28" r="8"/><text x="71" y="28">1</text><circle cx="171" cy="28" r="8"/><text x="171" y="28">2</text><circle cx="102" cy="90" r="8"/><text x="102" y="90">3</text><circle cx="201" cy="101" r="8"/><text x="201" y="101">4</text><circle cx="120" cy="131" r="8"/><text x="120" y="131">5</text></g>
+      </svg>
+    </figure>
+    <ol class="zones">
+      <li><b>Top left</b> Day of the week in Timekeeping. WT, AL, ST or TR in the other modes. HT while you set the Home City and RC during a reception.</li>
+      <li><b>Window</b> The date in Timekeeping. Home time in World Time. The current time in Stopwatch and Timer. Names and values in setting screens.</li>
+      <li><b>Main digits</b> The time for the mode on screen: time of day, alarm time, elapsed time or countdown.</li>
+      <li><b>Small digits</b> Seconds. Hundredths in the stopwatch. The word on, or two dashes, in Alarm. L1 to L3 during a reception.</li>
+      <li><b>Bottom bars</b> SNZ, ALM and SIG on the left. One charge bar above L, M or H on the right.</li>
+    </ol>
+  </div>
+  <p class="note" style="margin-top:12px">Select an indicator to make it blink on the watch.</p>
+  <div class="legend" id="legend">
+    <button class="lg" data-ind="RCVD"><b>RCVD</b><span>Synced by radio since midnight</span></button>
+    <button class="lg" data-ind="PS"><b>PS</b><span>Power saving is enabled in settings</span></button>
+    <button class="lg" data-ind="P"><b>P</b><span>p.m. in 12-hour mode</span></button>
+    <button class="lg" data-ind="MUTE"><b>♪ /</b><span>Button tone is muted</span></button>
+    <button class="lg" data-ind="DST"><b>DST</b><span>Summer time is being shown</span></button>
+    <button class="lg" data-ind="LT"><b>LT</b><span>Auto light is switched on</span></button>
+    <button class="lg" data-ind="SNZ"><b>SNZ</b><span>Snooze alarm is on</span></button>
+    <button class="lg" data-ind="ALM"><b>ALM</b><span>At least one alarm is on</span></button>
+    <button class="lg" data-ind="SIG"><b>SIG</b><span>Hourly signal is on</span></button>
+    <button class="lg" data-ind="LMH"><b>L·M·H</b><span>Charge level, one bar</span></button>
+  </div>
+  <ul class="facts" style="margin-top:16px">
+    <li><span class="tag t-man">Manual</span><span>Setting screens close on their own after two to three minutes without a press. Alarm mode also drops back to Timekeeping after that time.</span></li>
+    <li><span class="tag t-man">Manual</span><span>PS means power saving is enabled. It does not mean the watch is asleep.</span></li>
+    <li><span class="tag t-rep">Report</span><span>In Stopwatch and Timer the top-right window shows the current time. The older module 3159 did not do this.</span></li>
+  </ul>
+</section>
+
+<section class="panel" id="sync">
+  <div class="ph"><span class="pn">02</span><h2>Radio time sync</h2></div>
+  <p>Each night the watch listens for a long-wave time signal and corrects itself. With London as Home City it uses MSF from Cumbria or DCF77 from Germany and picks between them by itself.</p>
+  <div class="cols2">
+    <div>
+      <h3>Overnight attempts</h3>
+      <figure class="fig">
+        <svg id="night" viewBox="0 0 360 92" role="img" aria-label="Timeline from midnight to 5 a.m. with one receive attempt per hour. The first success cancels the rest."></svg>
+        <figcaption>One attempt an hour from midnight to 5 a.m. The first success cancels the rest of that night.</figcaption>
+      </figure>
+      <div class="row">
+        <span class="lbl" id="sig-lbl">Signal where the watch sits</span>
+        <div class="seg" role="group" aria-labelledby="sig-lbl">
+          <button class="chip sm" id="sig-good" aria-pressed="true">Good</button>
+          <button class="chip sm" id="sig-poor" aria-pressed="false">Weak</button>
+          <button class="chip sm" id="sig-none" aria-pressed="false">None</button>
+        </div>
+      </div>
+      <div class="row">
+        <button class="chip run" id="night-run">Run tonight's sync</button>
+        <button class="chip run" data-demo="rxnow">Hold D 2 s: receive now</button>
+        <button class="chip run" data-demo="lastrx">D: last sync result</button>
+      </div>
+      <p class="result" id="night-out" aria-live="polite">Not run yet.</p>
+    </div>
+    <div>
+      <h3>Will it sync tonight?</h3>
+      <p class="note">Live from the simulator. Change the mode, charge, Home City or timer and this list follows.</p>
+      <ul class="checks" id="preflight"></ul>
+    </div>
+  </div>
+  <h3>Transmitters</h3>
+  <div class="scroll"><table class="tbl" id="txtable">
+    <thead><tr><th>Signal</th><th>Site</th><th class="n">kHz</th><th class="n">Range</th><th>Home Cities that use it</th></tr></thead>
+    <tbody>
+      <tr data-tx="EU"><td>MSF</td><td>Anthorn, Cumbria, UK</td><td class="n">60</td><td class="n">1,500 km</td><td rowspan="2">Lisbon, London, Madrid, Paris, Rome, Berlin, Stockholm, Athens</td></tr>
+      <tr data-tx="EU"><td>DCF77</td><td>Mainflingen, Germany</td><td class="n">77.5</td><td class="n">1,500 km</td></tr>
+      <tr data-tx="NA"><td>WWVB</td><td>Fort Collins, Colorado, USA</td><td class="n">60</td><td class="n">3,000 km</td><td>Vancouver, Los Angeles, Edmonton, Denver, Mexico City, Chicago, New York, Halifax, St. John's</td></tr>
+      <tr data-tx="JP"><td>JJY</td><td>Fukushima and Fukuoka/Saga, Japan</td><td class="n">40 / 60</td><td class="n">1,000 km</td><td>Taipei, Seoul, Tokyo</td></tr>
+      <tr data-tx="CN"><td>BPC</td><td>Shangqiu, Henan, China</td><td class="n">68.5</td><td class="n">1,500 km</td><td>Hong Kong, Beijing</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note" style="margin-top:8px">The highlighted row is the one your current Home City listens for. The 3495 guide only marks which cities can receive. The city groups for JJY and BPC follow Casio's documentation for earlier Multi Band 6 modules.</p>
+  <ul class="facts">
+    <li><span class="tag t-man">Manual</span><span>Automatic reception runs between midnight and 5 a.m. After one success the watch makes no more attempts that day.</span></li>
+    <li><span class="tag t-cas">Casio</span><span>Up to six attempts a night, five for the Chinese signal.</span></li>
+    <li><span class="tag t-man">Manual</span><span>One reception normally takes three to eight minutes and can take sixteen. Leave the watch near a window with its 12 o'clock side toward the glass. Keep it still and away from metal, appliances and phones.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Nothing is received when the charge is low, in Alarm, Stopwatch or Timer mode, during a countdown, at power saving level 2, or when the Home City has no signal. An alarm that sounds during a reception ends it.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Level 1 power saving, where only the display is off, is not on that list. So the watch can still sync while it sleeps at level 1.</span></li>
+    <li><span class="tag t-rep">Report</span><span>RCVD means the watch has synced since midnight. It goes out at the first attempt of the new day, after a failed manual receive, and after a manual change to the time, date or Home City. RCVD being off in the evening is not a fault.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Press D in Timekeeping to see the date and time of the last successful sync. This is the dependable check.</span></li>
+    <li><span class="tag t-man">Manual</span><span>During a manual receive the seconds position shows L1, L2 or L3. L3 is a stable signal. It takes about ten seconds to settle, so use it to find a good spot.</span></li>
+    <li><span class="tag t-rep">Report</span><span>MSF is taken off air for planned maintenance several times a year, mostly in daytime. Overnight syncs are rarely affected, and DCF77 is the fallback.</span></li>
+    <li><span class="tag t-sim">Sim</span><span>A receive takes nine seconds here. ERR after a failed receive is how earlier modules show it. The 3495 guide does not show that screen.</span></li>
+  </ul>
+</section>
+
+<section class="panel" id="solar">
+  <div class="ph"><span class="pn">03</span><h2>Solar power</h2></div>
+  <p>The solar panel is built into the face around the display. It charges a small rechargeable cell. The bar above L, M or H shows the charge.</p>
+  <h3>Charge levels</h3>
+  <p class="note">Select a level to put the simulator in that state.</p>
+  <div class="ladder" id="ladder" role="group" aria-label="Charge level">
+    <button class="rung" data-p="H" aria-pressed="true"><span class="lv">H</span><span class="st good">● Good</span><span class="ds">Everything works.</span></button>
+    <button class="rung" data-p="M" aria-pressed="false"><span class="lv">M</span><span class="st good">● Good</span><span class="ds">Everything works.</span></button>
+    <button class="rung" data-p="L" aria-pressed="false"><span class="lv">L</span><span class="st warn">▲ Low</span><span class="ds">L and LOW flash. No light, no sounds, no radio sync. Timekeeping mode only.</span></button>
+    <button class="rung" data-p="CHG" aria-pressed="false"><span class="lv">CHG</span><span class="st crit">▲ Critical</span><span class="ds">CHG flashes. Every function is off.</span></button>
+    <button class="rung" data-p="DEAD" aria-pressed="false"><span class="lv">—</span><span class="st crit">✕ Flat</span><span class="ds">Blank display. Stored settings are erased and go back to factory defaults.</span></button>
+  </div>
+  <div class="cols2" style="margin-top:8px">
+    <div>
+      <h3>Light needed for one day of running</h3>
+      <div class="bars" role="img" aria-label="Light exposure needed per day of running: 8 minutes in outdoor sun, 30 minutes by a sunny window, 48 minutes by a window on an overcast day, 8 hours under indoor fluorescent light.">
+        <div class="barrow" title="Outdoor sun, 50,000 lux: 8 minutes"><span class="bn">Outdoor sun<small>50,000 lx</small></span><span class="bt"><i style="width:1.3%"></i><b>8 min</b></span></div>
+        <div class="barrow" title="Sunny day by a window, 10,000 lux: 30 minutes"><span class="bn">Sunny, by a window<small>10,000 lx</small></span><span class="bt"><i style="width:4.9%"></i><b>30 min</b></span></div>
+        <div class="barrow" title="Overcast day by a window, 5,000 lux: 48 minutes"><span class="bn">Overcast, by a window<small>5,000 lx</small></span><span class="bt"><i style="width:7.8%"></i><b>48 min</b></span></div>
+        <div class="barrow" title="Indoor fluorescent light, 500 lux: 8 hours"><span class="bn">Indoor fluorescent<small>500 lx</small></span><span class="bt"><i style="width:78%"></i><b>8 h</b></span></div>
+      </div>
+      <p class="note">Bars are to scale. Indoor light alone barely keeps up.</p>
+    </div>
+    <div>
+      <h3>Hours of light to recover</h3>
+      <div class="scroll"><table class="tbl" style="min-width:300px">
+        <thead><tr><th>Light</th><th class="n">Flat to M</th><th class="n">M to H</th><th class="n">H to full</th></tr></thead>
+        <tbody>
+          <tr><td>Outdoor sun</td><td class="n">3 h</td><td class="n">34 h</td><td class="n">10 h</td></tr>
+          <tr><td>Sunny window</td><td class="n">10 h</td><td class="n">130 h</td><td class="n">35 h</td></tr>
+          <tr><td>Overcast window</td><td class="n">16 h</td><td class="n">210 h</td><td class="n">57 h</td></tr>
+          <tr><td>Indoor fluorescent</td><td class="n">206 h</td><td class="n">–</td><td class="n">–</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note" style="margin-top:8px">A dash means the manual gives no figure. Indoor light cannot get it there.</p>
+    </div>
+  </div>
+  <h3>Power saving</h3>
+  <div class="flow" id="psflow">
+    <button class="state" data-sleep="0" aria-current="true"><b>Awake</b>Normal display</button>
+    <span class="arr">about 1 h in the dark between 22:00 and 06:00 ▸</span>
+    <button class="state" data-sleep="1"><b>Level 1</b>Display off. Everything else runs.</button>
+    <span class="arr">6 to 7 days like that ▸</span>
+    <button class="state" data-sleep="2"><b>Level 2</b>All functions off. The clock keeps counting.</button>
+  </div>
+  <p class="note" style="margin-top:10px">To wake it from either level, press any button, move it into bright light, or tilt it toward you with auto light on. It never sleeps in Stopwatch or Timer mode, or with power saving switched off in settings.</p>
+  <ul class="facts">
+    <li><span class="tag t-man">Manual</span><span>From a full charge the watch runs about 10 months with no light at all. That assumes one 1.5 s light use, one alarm and four minutes of reception a day, plus six hours a day in power saving.</span></li>
+    <li><span class="tag t-cas">Casio</span><span>About 22 months if it is stored in the dark with power saving on.</span></li>
+    <li><span class="tag t-man">Manual</span><span>H, M and L flashing together is charge recovery. It follows several power-hungry actions close together, such as light, alarm and reception. Functions are limited for about 15 minutes, less in bright light.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Do not charge it on a car dashboard, close to an incandescent bulb, or anywhere it gets hot. The display can turn black when hot and recovers as it cools.</span></li>
+    <li><span class="tag t-man">Manual</span><span>A sleeve over the face cuts charging and can send the watch into power saving while you wear it.</span></li>
+    <li><span class="tag t-man">Manual</span><span>The cell is not meant to be changed by the owner. Its capacity fades over years of use.</span></li>
+    <li><span class="tag t-unv">Unverified</span><span>Parts listings show a CTL1616-type lithium cell (2.3 V) for Casio's solar squares. This is not confirmed for module 3495.</span></li>
+    <li><span class="tag t-sim">Sim</span><span>After a flat battery the simulator restarts at 1 January 2021 with Tokyo as Home City. The real factory defaults are not documented.</span></li>
+  </ul>
+</section>
+
+<section class="panel" id="light">
+  <div class="ph"><span class="pn">04</span><h2>Light</h2></div>
+  <p>B lights the display with a white LED for 1.5 or 3 seconds. Auto light does the same when you tilt the watch toward your face in the dark.</p>
+  <div class="cols2">
+    <div>
+      <figure class="fig">
+        <svg id="gauge" viewBox="0 0 260 150" role="img" aria-label="Side view of the watch tilting up from level. Auto light fires when the angle passes 40 degrees.">
+          <path class="g-zone" d="M50 125L126.6 60.7A100 100 0 0 0 50 25z"/>
+          <path class="g-arc" d="M150 125A100 100 0 0 0 50 25"/>
+          <path class="g-line" d="M50 125H246M50 125V14"/>
+          <path class="g-ray" d="M50 125L137.5 51.6"/>
+          <text x="248" y="139" text-anchor="end">LEVEL 0°</text>
+          <text x="142" y="48">40° THRESHOLD</text>
+          <text x="58" y="20">90°</text>
+          <g class="g-arm" id="gauge-arm">
+            <path class="g-beam" d="M66 118L44 40h66z"/>
+            <rect x="50" y="118" width="80" height="14" rx="3"/>
+            <rect class="g-glass" x="66" y="116" width="46" height="4"/>
+          </g>
+        </svg>
+        <figcaption>Auto light fires as the watch passes 40° from level, tilted toward you.</figcaption>
+      </figure>
+      <label class="lbl" for="tilt">Wrist angle<output id="tilt-out" for="tilt">0°</output></label>
+      <input type="range" id="tilt" min="0" max="90" value="0" step="1">
+      <div class="row">
+        <span class="lbl" id="amb-lbl">Surroundings</span>
+        <div class="seg" role="group" aria-labelledby="amb-lbl">
+          <button class="chip sm" id="amb-bright" aria-pressed="true">Bright</button>
+          <button class="chip sm" id="amb-dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+      <div class="row"><button class="chip run" data-demo="autolight">Hold B 3 s: auto light on or off</button></div>
+    </div>
+    <div>
+      <h3>Auto light needs all of these</h3>
+      <ul class="checks" id="lt-checks"></ul>
+      <p class="result" id="lt-out" aria-live="polite"></p>
+      <p class="note">Set the surroundings to dark, switch auto light on, then drag the angle past 40°.</p>
+    </div>
+  </div>
+  <ul class="facts">
+    <li><span class="tag t-cas">Casio</span><span>White LED with afterglow. It stays on for 1.5 s or 3 s per press. Choose which in settings.</span></li>
+    <li><span class="tag t-rep">Report</span><span>The LED sits at the left edge of the display, so the left side is brighter than the right.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Inside setting screens B changes the value and does not light the display.</span></li>
+    <li><span class="tag t-rep">Report</span><span>Auto light only fires in the dark. The solar panel doubles as the light sensor, so there is no separate sensor to cover or clean.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Auto light can misfire under a sleeve and run the battery down. It can also fail if your forearm is more than 15° away from horizontal when you tilt the watch.</span></li>
+    <li><span class="tag t-man">Manual</span><span>There is no light while a tone is sounding, during reception, or at charge level L and below.</span></li>
+    <li><span class="tag t-man">Manual</span><span>A faint rattle when you shake the watch is the tilt switch. It is normal.</span></li>
+    <li><span class="tag t-rep">Report</span><span>Guides written for older squares call the auto light indicator A.EL. On this module it reads LT.</span></li>
+    <li><span class="tag t-unv">Unverified</span><span>Owners of earlier solar squares report that auto light stays on until you switch it off, while non-solar models cancel it after about six hours. This is not confirmed for module 3495.</span></li>
+  </ul>
+</section>
+
+<section class="panel" id="setup">
+  <div class="ph"><span class="pn">05</span><h2>Settings</h2></div>
+  <p>In Timekeeping, hold A for two seconds. SET and Hold appear, then HT flashes and the Home City name scrolls. Each press of C moves to the next of 15 items. D changes the value, B lowers it where a value can go down, and A saves and exits.</p>
+  <p class="note">The values on the right are live from the simulator. Open an item for detail, or let the demo take you to it.</p>
+  <ol class="rail" id="rail"></ol>
+</section>
+
+<section class="panel" id="world">
+  <div class="ph"><span class="pn">06</span><h2>World time</h2></div>
+  <p>World Time holds five cities. The large digits show the selected slot and the window at the top right shows your Home time. D steps through the slots.</p>
+  <h3>Your five slots</h3>
+  <div class="slots" id="slots"></div>
+  <div class="row">
+    <button class="chip run" data-demo="swap">A + B: swap with Home, then back</button>
+    <button class="chip run" data-demo="wtcity">Hold A 2 s: change a slot's city</button>
+  </div>
+  <ul class="facts">
+    <li><span class="tag t-man">Manual</span><span>48 cities in 31 time zones, plus UTC.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Summer time is set by hand for each slot, OFF or ON. There is no AUTO here, so check your slots after the clocks change. UTC has no summer-time option.</span></li>
+    <li><span class="tag t-man">Manual</span><span>Pressing A and B together swaps the Home City with the slot on screen. After a swap the watch listens for the new Home City's transmitter. If that city has none, radio sync stops until you swap back.</span></li>
+    <li><span class="tag t-rep">Report</span><span>Kathmandu, Buenos Aires and Fernando de Noronha are new on this module. Miami, Toronto and Santiago were dropped.</span></li>
+  </ul>
+  <details class="fold">
+  <summary>City table · 49 entries</summary>
+  <div class="row">
+    <label class="lbl" for="cityq">Filter</label><input id="cityq" type="search" placeholder="City name" autocomplete="off">
+    <div class="seg" role="group" aria-label="What selecting a city does">
+      <button class="chip sm" id="cm-slot" aria-pressed="true">Load into slot <span id="cm-n">1</span></button>
+      <button class="chip sm" id="cm-home" aria-pressed="false">Make Home City</button>
+    </div>
+  </div>
+  <p class="note">Listed in the order the watch steps through them with D. Selecting a city here is a simulator shortcut. On the watch, hold A and use B and D.</p>
+  <div class="cities" id="cities"></div>
+  </details>
+</section>
+
+<section class="panel" id="timing">
+  <div class="ph"><span class="pn">07</span><h2>Alarm, stopwatch, timer</h2></div>
+  <div class="cards">
+    <article class="card">
+      <div>
+      <h3>Alarm · AL</h3>
+      <ol class="steps">
+        <li><kbd>D</kbd> steps through -1-, -2-, -3-, -4-, SNZ and SIG.</li>
+        <li><kbd>A</kbd> switches the item on screen on or off. The seconds position reads on, or two dashes for off.</li>
+        <li>Hold <kbd>A</kbd> for 2 s to set the time. Hours flash. <kbd>C</kbd> moves to minutes, <kbd>B</kbd> and <kbd>D</kbd> change the value, <kbd>A</kbd> saves.</li>
+      </ol>
+      <div class="row">
+        <button class="chip run" data-demo="alarmset">Set alarm 1 to 7:30</button>
+        <button class="chip run" data-demo="sig">Hourly signal on or off</button>
+        <button class="chip run" id="alarm-now">Sound the alarm now</button>
+      </div>
+      </div>
+      <ul class="facts">
+        <li><span class="tag t-man">Manual</span><span>Four daily alarms and one snooze alarm. There are no weekday or date options.</span></li>
+        <li><span class="tag t-man">Manual</span><span>The tone lasts 10 seconds. Any button stops it.</span></li>
+        <li><span class="tag t-man">Manual</span><span>Snooze sounds up to seven times at five-minute gaps. To cancel it, switch SNZ off.</span></li>
+        <li><span class="tag t-man">Manual</span><span>Alarms are silent at low charge and at power saving level 2. MUTE does not silence them.</span></li>
+        <li><span class="tag t-rep">Report</span><span>Owners describe the tone as quiet. Do not rely on it to wake you through bedding.</span></li>
+        <li><span class="tag t-sim">Sim</span><span>The simulator switches an alarm on when you enter its time. On the watch, check that the seconds position reads on.</span></li>
+      </ul>
+    </article>
+    <article class="card">
+      <div>
+      <h3>Stopwatch · ST</h3>
+      <div class="seq"><b>Elapsed time</b><span><kbd>D</kbd> start</span><em>▸</em><span><kbd>D</kbd> stop</span><em>▸</em><span><kbd>D</kbd> resume</span><em>▸</em><span><kbd>D</kbd> stop</span><em>▸</em><span><kbd>A</kbd> reset</span></div>
+      <div class="seq"><b>Split time</b><span><kbd>D</kbd> start</span><em>▸</em><span><kbd>A</kbd> split</span><em>▸</em><span><kbd>A</kbd> release</span><em>▸</em><span><kbd>D</kbd> stop</span><em>▸</em><span><kbd>A</kbd> reset</span></div>
+      <div class="seq"><b>First and second finisher</b><span><kbd>D</kbd> start</span><em>▸</em><span><kbd>A</kbd> 1st in</span><em>▸</em><span><kbd>D</kbd> 2nd in</span><em>▸</em><span><kbd>A</kbd> show 2nd</span><em>▸</em><span><kbd>A</kbd> reset</span></div>
+      <div class="row">
+        <button class="chip run" data-demo="split">Time two finishers</button>
+      </div>
+      </div>
+      <ul class="facts">
+        <li><span class="tag t-man">Manual</span><span>Counts to 23:59'59". Hundredths show for the first hour only. After that it counts whole seconds.</span></li>
+        <li><span class="tag t-man">Manual</span><span>SPL in the window means a split is frozen on the display. Timing continues underneath.</span></li>
+        <li><span class="tag t-man">Manual</span><span>The watch does not enter power saving while it is in Stopwatch mode.</span></li>
+      </ul>
+    </article>
+    <article class="card">
+      <div>
+      <h3>Timer · TR</h3>
+      <div class="seq"><b>Running it</b><span><kbd>D</kbd> start</span><em>▸</em><span><kbd>D</kbd> pause</span><em>▸</em><span><kbd>D</kbd> resume</span><em>▸</em><span>tone 10 s</span></div>
+      <ol class="steps">
+        <li>With the start time showing, hold <kbd>A</kbd> for 2 s. Hours flash.</li>
+        <li><kbd>C</kbd> moves from hours to minutes to seconds. <kbd>B</kbd> and <kbd>D</kbd> change the value. <kbd>A</kbd> saves.</li>
+        <li><kbd>A</kbd> resets a paused countdown to the start time.</li>
+      </ol>
+      <div class="row">
+        <button class="chip run" data-demo="timer10">Set and run 10 seconds</button>
+      </div>
+      </div>
+      <ul class="facts">
+        <li><span class="tag t-man">Manual</span><span>Start time from 1 second to 24 hours in one-second steps. A start time of 0:00 00 gives 24 hours.</span></li>
+        <li><span class="tag t-man">Manual</span><span>At zero the tone sounds for 10 seconds and the start time is loaded again. It does not repeat by itself.</span></li>
+        <li><span class="tag t-man">Manual</span><span>A running countdown blocks radio sync. The watch does not enter power saving in Timer mode.</span></li>
+        <li><span class="tag t-rep">Report</span><span>Setting seconds is new. Module 3159 could only set minutes and hours.</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="panel" id="care">
+  <div class="ph"><span class="pn">08</span><h2>Care and limits</h2></div>
+  <div class="minis">
+    <div class="mini"><h3>Water · 20 bar</h3><p>Swimming, windsurfing and skin diving are fine. It is not for scuba with air tanks. Do not press buttons under water or while it is wet. Avoid hot baths, saunas and soap. Rinse it in fresh water after the sea.</p></div>
+    <div class="mini"><h3>Resin strap and bezel</h3><p>Sweat and water left on the resin cause early wear, cracks and breaks. Rinse and dry it after heavy use. Keep solvents, oils, fuel, adhesives and cosmetics off it. Replace the strap when it stiffens, cracks or changes colour.</p></div>
+    <div class="mini"><h3>Seals and service</h3><p>Casio advises new gaskets every two to three years to keep the water rating. Battery work should go to a Casio service centre, which checks water resistance afterwards.</p></div>
+    <div class="mini"><h3>Temperature</h3><p>The display is hard to read below 0 °C and above 40 °C. Long periods above 60 °C damage it. Timekeeping drifts at both extremes.</p></div>
+    <div class="mini"><h3>Buttons</h3><p>Press each button now and then. Buttons that are never used can become stiff.</p></div>
+    <div class="mini"><h3>Clock limits</h3><p>The calendar runs from 2000 to 2099. Without a radio sync the watch keeps within 15 seconds a month.</p></div>
+    <div class="mini"><h3>Static and magnets</h3><p>Strong static can blank the display for a moment. Strong static or magnetism can also upset the auto light tilt switch. Lower your arm and tilt again.</p></div>
+  </div>
+  <p class="note" style="margin-top:12px">All from the Operation Guide.</p>
+</section>
+
+<section class="panel" id="tests">
+  <div class="ph"><span class="pn">09</span><h2>Undocumented test screens</h2></div>
+  <p><span class="tag t-unv">Unverified</span>These are not in the manual. They are reported for G-Shock squares in general and confirmed by owners for the older module 3159. They are not confirmed for module 3495. Any button exits and no settings are changed. The simulator does not include them.</p>
+  <div class="scroll"><table class="tbl" style="min-width:0">
+    <thead><tr><th>Press together</th><th>Reported result</th></tr></thead>
+    <tbody>
+      <tr><td><kbd>A</kbd> <kbd>C</kbd> <kbd>D</kbd></td><td>Display test. Every segment lights. D steps through further screens, one of which shows the module number.</td></tr>
+      <tr><td><kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd></td><td>Tilt switch test. Shows TLT, and 8888 while the watch is tilted.</td></tr>
+      <tr><td><kbd>A</kbd> <kbd>B</kbd> <kbd>D</kbd></td><td>Solar panel test. Shows SLR, and 8888 when the light level changes.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="panel" id="sources">
+  <div class="ph"><span class="pn">10</span><h2>Sources</h2></div>
+  <ol class="src">
+    <li><a href="https://support.casio.com/global/en/wat/manual/3495_en/index.html" target="_blank" rel="noopener">Casio, Watch Operation Guide 3495</a>. <span>Button logic, indicators, charging figures, reception rules, city table.</span></li>
+    <li><a href="https://www.casio.com/europe/watches/gshock/product.GW-M5610U-1/" target="_blank" rel="noopener">Casio Europe, GW-M5610U-1 product page</a>. <span>Dimensions, LED, attempts per night, storage life, frequencies.</span></li>
+    <li><a href="https://www.g-central.com/g-shock-5000-u-series-including-gw-5000u-1/" target="_blank" rel="noopener">G-Central, the U-series squares</a>. <span>What module 3495 changed from 3159.</span></li>
+    <li><a href="https://www.fratellowatches.com/casio-silently-updated-its-most-significant-g-shock-square/" target="_blank" rel="noopener">Fratello, Casio's quiet update to the square</a>. <span>LED position, city list changes, stopwatch change.</span></li>
+    <li><a href="https://www.fratellowatches.com/g-shock-square-bluetooth-multi-band-6-mystery-solved/" target="_blank" rel="noopener">Fratello, Multi Band 6 on the squares</a>. <span>Reception window, auto receive with a Home City that has no signal.</span></li>
+    <li><a href="https://www.watchuseek.com/threads/rcvd-disappears-on-g-shock-5610-m-3495.5405550/" target="_blank" rel="noopener">WatchUSeek, RCVD disappears on module 3495</a> and <a href="https://www.watchuseek.com/threads/g-shock-gw-m5610u-rcvd.5518608/" target="_blank" rel="noopener">GW-M5610U RCVD</a>. <span>What RCVD means and when it clears.</span></li>
+    <li><a href="https://www.watchuseek.com/threads/two-gw-m5610-with-bad-auto-el.964767/page-11" target="_blank" rel="noopener">WatchUSeek, auto light threads</a> and <a href="https://www.hodinky-365.com/blog/casio-illuminator" target="_blank" rel="noopener">Hodinky 365, Casio Illuminator</a>. <span>Auto light only in the dark, solar panel as sensor.</span></li>
+    <li><a href="https://www.60clicks.com/casio-g-shock-secret-hidden-features/" target="_blank" rel="noopener">60Clicks, hidden G-Shock test screens</a>. <span>Three-button test modes.</span></li>
+    <li><a href="https://galsys.co.uk/news/msf-outage-11-june-npl-maintenance" target="_blank" rel="noopener">Galleon Systems, MSF maintenance notice</a>. <span>Planned MSF outages.</span></li>
+    <li><a href="https://www.casio.com/sg/support/watches/faq/category.watch@features@solar-power/" target="_blank" rel="noopener">Casio, solar power FAQ</a>. <span>Charging cautions.</span></li>
+    <li><a href="https://www.esslinger.com/casio-ctl1616-battery-solar-rechargeable-replacement-cell/" target="_blank" rel="noopener">Esslinger, CTL1616 cell listing</a>. <span>Cell type used in Casio solar squares.</span></li>
+  </ol>
+</section>
+</main>
+</div>
+<footer>Unofficial reference. Button behaviour follows Casio's Watch Operation Guide 3495. The drawing of the display is an approximation and reception is shortened to a few seconds. Not affiliated with or endorsed by Casio Computer Co., Ltd.</footer>
+</div>
+<a class="jump" id="jump" href="#sim" hidden>Watch ↑</a>
+<script>
+/* GW-M5610U (module 3495) simulator core. No DOM in this block.
+   Button logic follows Casio's Watch Operation Guide 3495. Timing of radio reception is compressed. */
+function createWatch(opts){
+  'use strict';
+  opts = opts || {};
+  var now = opts.now || function(){ return Date.now(); };
+  var emit = opts.emit || function(){};
+  var HOUR = 3600e3, FIG = ' ';
+
+  /* [name, UTC offset (h), transmitter group, summer-time rule] in the order the watch steps through them */
+  var C = [
+    ['UTC',0,null,null],
+    ['LISBON',0,'EU','EU'],['LONDON',0,'EU','EU'],['MADRID',1,'EU','EU'],['PARIS',1,'EU','EU'],
+    ['ROME',1,'EU','EU'],['BERLIN',1,'EU','EU'],['STOCKHOLM',1,'EU','EU'],['ATHENS',2,'EU','EU'],
+    ['CAIRO',2,null,null],['JERUSALEM',2,null,null],['MOSCOW',3,null,null],['JEDDAH',3,null,null],
+    ['TEHRAN',3.5,null,null],['DUBAI',4,null,null],['KABUL',4.5,null,null],['KARACHI',5,null,null],
+    ['DELHI',5.5,null,null],['KATHMANDU',5.75,null,null],['DHAKA',6,null,null],['YANGON',6.5,null,null],
+    ['BANGKOK',7,null,null],['SINGAPORE',8,null,null],['HONG KONG',8,'CN',null],['BEIJING',8,'CN',null],
+    ['TAIPEI',8,'JP',null],['SEOUL',9,'JP',null],['TOKYO',9,'JP',null],['ADELAIDE',9.5,null,'AU'],
+    ['GUAM',10,null,null],['SYDNEY',10,null,'AU'],['NOUMEA',11,null,null],['WELLINGTON',12,null,'NZ'],
+    ['PAGO PAGO',-11,null,null],['HONOLULU',-10,null,null],['ANCHORAGE',-9,null,null],
+    ['VANCOUVER',-8,'NA','NA'],['LOS ANGELES',-8,'NA','NA'],['EDMONTON',-7,'NA','NA'],['DENVER',-7,'NA','NA'],
+    ['MEXICO CITY',-6,'NA',null],['CHICAGO',-6,'NA','NA'],['NEW YORK',-5,'NA','NA'],['HALIFAX',-4,'NA','NA'],
+    ["ST. JOHN'S",-3.5,'NA','NA'],['BUENOS AIRES',-3,null,null],['RIO DE JANEIRO',-3,null,null],
+    ['F. DE NORONHA',-2,null,null],['PRAIA',-1,null,null]
+  ];
+  var TX = { EU:'MSF / DCF77', CN:'BPC', JP:'JJY', NA:'WWVB' };
+  var DOW = [
+    ['SU','MO','TU','WE','TH','FR','SA'],
+    ['DO','LU','MA','MI','JU','VI','SA'],
+    ['DI','LU','MA','ME','JE','VE','SA'],
+    ['SO','MO','DI','MI','DO','FR','SA'],
+    ['DO','LU','MA','ME','GI','VE','SA'],
+    ['BC','ПH','BT','CP','ЧT','ПT','CБ']
+  ];
+  var LANG = ['ENG','ESP','FRA','DEU','ITA','PyC'];
+  var ORDER = ['TK','WT','AL','ST','TR'];
+  var NAME = {TK:'Timekeeping', WT:'World Time', AL:'Alarm', ST:'Stopwatch', TR:'Timer'};
+  var SET = [
+    {n:'Home City', d:'Next city', b:'Previous city', rep:true},
+    {n:'Summer time', d:'Next option'},
+    {n:'Seconds', d:'Reset seconds to 00'},
+    {n:'Hours', d:'Hour up', b:'Hour down', rep:true},
+    {n:'Minutes', d:'Minute up', b:'Minute down', rep:true},
+    {n:'Year', d:'Year up', b:'Year down', rep:true},
+    {n:'Month', d:'Month up', b:'Month down', rep:true},
+    {n:'Day', d:'Day up', b:'Day down', rep:true},
+    {n:'12/24-hour', d:'Switch 12H / 24H'},
+    {n:'Date format', d:'Switch M.DD / DD.M'},
+    {n:'Day language', d:'Next language'},
+    {n:'Button tone', d:'Switch KEY♪ / MUTE'},
+    {n:'Light duration', d:'Switch 1.5 s / 3 s'},
+    {n:'Auto receive', d:'Switch On / OFF'},
+    {n:'Power saving', d:'Switch On / OFF'}
+  ];
+
+  var S, held = {};
+
+  function idx(name){ for (var i=0;i<C.length;i++) if (C[i][0]===name) return i; return 0; }
+  function log(m){ emit('log', m); }
+  function p2(n){ return (n<10?'0':'')+n; }
+  function s2(n){ return (n<10?' ':'')+n; }
+  function f2(n){ return (n<10?FIG:'')+n; }
+  function cols(s){ var n=0, i, ch; for (i=0;i<s.length;i++){ ch=s.charAt(i); n += (ch==='.'||ch===':'||ch==="'") ? 1 : (ch===' ' ? 3 : 5); if (i<s.length-1) n+=1; } return n; }
+
+  /* ---------- summer-time rules ---------- */
+  function lastSun(y,m){ var d = new Date(Date.UTC(y,m+1,0)); return Date.UTC(y,m,d.getUTCDate()-d.getUTCDay()); }
+  function nthSun(y,m,n){ var f = new Date(Date.UTC(y,m,1)); return Date.UTC(y,m,1+((7-f.getUTCDay())%7)+7*(n-1)); }
+  function ruleDst(rule, off, t){
+    if (!rule) return false;
+    var o = off*HOUR, y = new Date(t+o).getUTCFullYear(), s, e;
+    if (rule==='EU'){ s = lastSun(y,2)+HOUR; e = lastSun(y,9)+HOUR; return t>=s && t<e; }
+    if (rule==='NA'){ s = nthSun(y,2,2)+2*HOUR-o; e = nthSun(y,10,1)+HOUR-o; return t>=s && t<e; }
+    if (rule==='AU'){ s = nthSun(y,9,1)+2*HOUR-o; e = nthSun(y,3,1)+2*HOUR-o; return t>=s || t<e; }
+    if (rule==='NZ'){ s = lastSun(y,8)+2*HOUR-o; e = nthSun(y,3,1)+2*HOUR-o; return t>=s || t<e; }
+    return false;
+  }
+
+  /* ---------- state ---------- */
+  function defaults(factory){
+    var t = now();
+    function slot(name){ var i = idx(name); return {c:i, dst: ruleDst(C[i][3], C[i][1], t)}; }
+    return {
+      mode:'TK', sub:null, subT0:0, setIdx:0, setT0:0,
+      home: idx(factory ? 'TOKYO' : 'LONDON'), homeDst:'auto', adj:0,
+      h24:false, dateFmt:'MD', lang:0, tone:true, lightDur:1.5, autoRx:true, ps:true, autoLight:false,
+      wt:[slot('NEW YORK'), slot('TOKYO'), slot('UTC'), slot('DUBAI'), slot('SYDNEY')],
+      wtSel:0, wtStage:'city',
+      al:[{h:6,m:0,on:false},{h:7,m:0,on:false},{h:12,m:0,on:false},{h:18,m:0,on:false},{h:6,m:30,on:false}],
+      sig:false, alSel:0, alStage:'h', snz:null,
+      sw:{run:false, t0:0, acc:0, split:null},
+      tm:{start:600, left:600e3, run:false, end:0}, tmStage:'h',
+      lightUntil:0, rx:null, rxRes:null, lastRx:null, rcvd:false, rcvdKey:0,
+      power:'H', sleep:0, dark:false, tilt:0, signal:'good',
+      beep:null, banner:null, lastOp:t, lastMin:null
+    };
+  }
+
+  /* ---------- time ---------- */
+  function utc(){ return now() + S.adj; }
+  function homeDstOn(t){
+    if (S.homeDst==='on') return true;
+    if (S.homeDst==='off') return false;
+    var c = C[S.home];
+    return c[2] ? ruleDst(c[3], c[1], t) : false;
+  }
+  function homeOff(t){ return C[S.home][1]*HOUR + (homeDstOn(t) ? HOUR : 0); }
+  function fields(ms){
+    var d = new Date(ms);
+    return {y:d.getUTCFullYear(), mo:d.getUTCMonth()+1, d:d.getUTCDate(), h:d.getUTCHours(), mi:d.getUTCMinutes(),
+            s:d.getUTCSeconds(), ms:d.getUTCMilliseconds(), dow:d.getUTCDay()};
+  }
+  function homeNow(){ var t = utc(); return fields(t + homeOff(t)); }
+  function slotNow(i){ var w = S.wt[i], c = C[w.c]; return fields(utc() + c[1]*HOUR + (w.dst ? HOUR : 0)); }
+  function dayKey(f){ return f.y*10000 + f.mo*100 + f.d; }
+  function setHome(ch, zeroSec){
+    var t = utc(), off = homeOff(t), f = fields(t+off), k, dim, local;
+    for (k in ch) f[k] = ch[k];
+    dim = new Date(Date.UTC(f.y, f.mo, 0)).getUTCDate();
+    if (f.d > dim) f.d = dim;
+    local = Date.UTC(f.y, f.mo-1, f.d, f.h, f.mi, zeroSec ? 0 : f.s, zeroSec ? 0 : f.ms);
+    S.adj = (local - off) - now();
+    S.rcvd = false;
+  }
+  function seedLastRx(){
+    var t = utc(), off = homeOff(t), f = fields(t+off);
+    var today = Date.UTC(f.y, f.mo-1, f.d, 0, 4, 0) - off;
+    if (t - today > 6*60e3){ S.lastRx = today; S.rcvd = true; S.rcvdKey = dayKey(f); }
+    else { S.lastRx = today - 86400e3; S.rcvd = false; S.rcvdKey = 0; }
+  }
+
+  /* ---------- sound and light ---------- */
+  function powered(){ return S.power==='H' || S.power==='M'; }
+  function key(){ if (S.tone && powered()) emit('beep','key'); }
+  function beeping(){ return !!(S.beep && now() < S.beep.until); }
+  function beep(kind){
+    if (!powered() || S.sleep===2) return false;
+    S.beep = {kind:kind, until: now() + (kind==='sig' ? 900 : 10000)};
+    S.lightUntil = 0;
+    if (S.sub==='rx') endRx(false, true, 'A tone started, so reception stopped.');
+    emit('beep', kind);
+    return true;
+  }
+  function stopBeep(){ S.beep = null; emit('beep','stop'); }
+  function light(){
+    if (!powered()){ log('Light is off at this charge level.'); return false; }
+    if (beeping() || S.sub==='rx') return false;
+    S.lightUntil = now() + S.lightDur*1000;
+    return true;
+  }
+  function toggleAutoLight(){
+    S.autoLight = !S.autoLight;
+    log(S.autoLight ? 'Auto light on. LT is shown.' : 'Auto light off.');
+  }
+  function autoLightChecks(){
+    return [
+      {ok:S.autoLight, t:'Auto light is switched on (LT shown)'},
+      {ok:S.dark, t:'Surroundings are dark'},
+      {ok:S.tilt>=40, t:'Watch is tilted 40° or more toward you'},
+      {ok:powered(), t:'Charge level is H or M'},
+      {ok:!beeping() && S.sub!=='rx', t:'No tone sounding and no reception running'}
+    ];
+  }
+  function autoLightTry(){
+    var c = autoLightChecks(), i;
+    for (i=0;i<c.length;i++) if (!c[i].ok) return false;
+    if (S.sleep){ S.sleep = 0; log('Tilt woke the watch.'); }
+    S.lightUntil = now() + S.lightDur*1000;
+    log('Auto light fired.');
+    return true;
+  }
+
+  /* ---------- modes ---------- */
+  function wtBanner(){
+    var name = C[S.wt[S.wtSel].c][0], w = cols(name);
+    S.banner = {t0:now(), a:'-'+(S.wtSel+1)+'-', aMs:800, b:name, bMs: w<=25 ? 1400 : 600+45*(w+2)};
+  }
+  function setMode(m){ S.mode = m; S.sub = null; S.banner = null; if (m==='WT') wtBanner(); }
+  function wake(){ S.sleep = 0; log('Awake.'); }
+
+  /* ---------- settings ---------- */
+  function enterSetTK(){ S.sub='set'; S.setIdx=0; S.setT0=now(); log('Settings open. C moves through 15 items. A saves and exits.'); }
+  function nextSet(){ S.setIdx=(S.setIdx+1)%15; S.setT0=now(); }
+  function exitSet(){ S.sub=null; S.banner=null; log('Saved.'); }
+  function adjTK(dir){
+    var i = S.setIdx, h = homeNow(), o, dim;
+    switch(i){
+      case 0:
+        S.home = (S.home + dir + C.length) % C.length; S.setT0 = now();
+        if (!C[S.home][2] && S.homeDst==='auto') S.homeDst = 'off';
+        S.rcvd = false; break;
+      case 1:
+        o = C[S.home][2] ? ['auto','off','on'] : ['off','on'];
+        S.homeDst = o[(o.indexOf(S.homeDst)+1) % o.length]; break;
+      case 2: setHome({mi: h.mi + (h.s>=30 ? 1 : 0)}, true); break;
+      case 3: setHome({h:(h.h+dir+24)%24}); break;
+      case 4: setHome({mi:(h.mi+dir+60)%60}); break;
+      case 5: setHome({y:2000+((h.y-2000+dir+100)%100)}); break;
+      case 6: setHome({mo:((h.mo-1+dir+12)%12)+1}); break;
+      case 7: dim = new Date(Date.UTC(h.y, h.mo, 0)).getUTCDate(); setHome({d:((h.d-1+dir+dim)%dim)+1}); break;
+      case 8: S.h24 = !S.h24; break;
+      case 9: S.dateFmt = S.dateFmt==='MD' ? 'DM' : 'MD'; break;
+      case 10: S.lang = (S.lang+1)%6; break;
+      case 11: S.tone = !S.tone; break;
+      case 12: S.lightDur = S.lightDur===1.5 ? 3 : 1.5; break;
+      case 13: if (C[S.home][2]) S.autoRx = !S.autoRx; else log('Auto receive cannot be changed: '+C[S.home][0]+' has no time signal.'); break;
+      case 14: S.ps = !S.ps; break;
+    }
+  }
+  function adjWT(dir){
+    var w = S.wt[S.wtSel];
+    if (S.wtStage==='city'){ w.c = (w.c + dir + C.length) % C.length; S.setT0 = now(); if (C[w.c][0]==='UTC') w.dst = false; }
+    else w.dst = !w.dst;
+  }
+  function adjAL(dir){ var a = S.al[S.alSel]; if (S.alStage==='h') a.h = (a.h+dir+24)%24; else a.m = (a.m+dir+60)%60; }
+  function adjTR(dir){
+    var st = S.tm.start, h = Math.floor(st/3600), m = Math.floor(st%3600/60), s = st%60;
+    if (S.tmStage==='h') h = (h+dir+24)%24; else if (S.tmStage==='m') m = (m+dir+60)%60; else s = (s+dir+60)%60;
+    S.tm.start = h*3600+m*60+s; S.tm.left = tmFull();
+  }
+  function adjust(dir){
+    if (S.mode==='TK') adjTK(dir); else if (S.mode==='WT') adjWT(dir); else if (S.mode==='AL') adjAL(dir); else if (S.mode==='TR') adjTR(dir);
+  }
+
+  /* ---------- world time ---------- */
+  function nextSlot(){ S.wtSel = (S.wtSel+1)%5; wtBanner(); }
+  function comboAvail(){ return S.mode==='WT' && !S.sub && !S.sleep && S.power!=='DEAD' && S.power!=='CHG' && !beeping(); }
+  function swap(){
+    var w = S.wt[S.wtSel], t = utc(), oldHome = S.home, oldDst = homeDstOn(t);
+    S.home = w.c; S.homeDst = C[w.c][2] ? 'auto' : (w.dst ? 'on' : 'off');
+    w.c = oldHome; w.dst = C[oldHome][0]==='UTC' ? false : oldDst;
+    S.rcvd = false; S.banner = null;
+    log('Swapped. Home City is now '+C[S.home][0]+'.');
+  }
+
+  /* ---------- alarm ---------- */
+  function alName(i){ return i<4 ? 'alarm '+(i+1) : (i===4 ? 'snooze alarm' : 'hourly signal'); }
+  function alOn(i){ return i<5 ? S.al[i].on : S.sig; }
+  function toggleAl(){
+    var i = S.alSel;
+    if (i<5){ S.al[i].on = !S.al[i].on; if (i===4 && !S.al[4].on) S.snz = null; } else S.sig = !S.sig;
+    log(alName(i).charAt(0).toUpperCase()+alName(i).slice(1)+(alOn(i) ? ' on.' : ' off.'));
+  }
+
+  /* ---------- stopwatch ---------- */
+  function swTime(){ var w = S.sw; return (w.acc + (w.run ? now()-w.t0 : 0)) % 86400e3; }
+  function swStartStop(){ var w = S.sw; if (w.run){ w.acc += now()-w.t0; w.run = false; } else { w.t0 = now(); w.run = true; } }
+  function swA(){
+    var w = S.sw;
+    if (w.split!==null){ w.split = null; return; }
+    if (w.run){ w.split = swTime(); return; }
+    w.acc = 0;
+  }
+  function swALabel(){ var w = S.sw; return w.split!==null ? (w.run ? 'Release split' : 'Show final time') : (w.run ? 'Split' : 'Reset to zero'); }
+
+  /* ---------- timer ---------- */
+  function tmFull(){ return (S.tm.start || 86400)*1000; }
+  function tmLeft(){ return S.tm.run ? Math.max(0, S.tm.end-now()) : S.tm.left; }
+  function tmStartStop(){
+    var t = S.tm;
+    if (t.run){ t.left = Math.max(0, t.end-now()); t.run = false; log('Countdown paused.'); }
+    else { t.end = now()+t.left; t.run = true; log('Countdown running.'); }
+  }
+
+  /* ---------- radio reception ---------- */
+  function rxBlock(manual){
+    var c = C[S.home];
+    if (!c[2]) return 'Reception is not possible: Home City '+c[0]+' has no time signal.';
+    if (!powered()) return 'Reception is not possible: the charge is too low.';
+    if (S.mode!=='TK' && S.mode!=='WT') return 'Reception only runs in Timekeeping or World Time mode.';
+    if (S.sleep===2) return 'Reception is off in power saving level 2.';
+    if (S.tm.run) return 'Reception is blocked while a countdown is running.';
+    if (!manual && !S.autoRx) return 'Auto receive is switched off in settings.';
+    return null;
+  }
+  function rxChecks(){
+    var c = C[S.home], okMode = S.mode==='TK' || S.mode==='WT';
+    return [
+      {ok:!!c[2], t: c[2] ? 'Home City '+c[0]+' listens for '+TX[c[2]] : 'Home City '+c[0]+' has no time signal'},
+      {ok:S.autoRx && !!c[2], t: (S.autoRx && c[2]) ? 'Auto receive is on' : 'Auto receive is off'},
+      {ok:okMode, t: okMode ? 'Mode is Timekeeping or World Time' : 'Mode is '+NAME[S.mode]+': no reception from here'},
+      {ok:powered(), t: powered() ? 'Charge level is H or M' : 'Charge is too low'},
+      {ok:S.sleep!==2, t: S.sleep===2 ? 'Power saving level 2: reception is off' : (S.sleep===1 ? 'Asleep at level 1: reception still runs' : 'Not in power saving level 2')},
+      {ok:!S.tm.run, t: S.tm.run ? 'A countdown is running: reception is blocked' : 'No countdown running'}
+    ];
+  }
+  function startRx(){
+    S.sub = 'rx'; S.rx = {t0:now(), dur:9000}; S.lightUntil = 0;
+    log('Receiving. Shown here in 9 s. The real watch takes 3 to 8 minutes.');
+  }
+  function rxLevel(){
+    if (!S.rx) return 0;
+    var e = now()-S.rx.t0;
+    if (S.signal==='none') return 0;
+    if (S.signal==='poor') return e<2500 ? 0 : (Math.floor(e/1300)%3===0 ? 0 : 1);
+    return e<1500 ? 0 : (e<3500 ? 1 : (e<6000 ? 2 : 3));
+  }
+  function endRx(ok, cancelled, msg){
+    S.rx = null;
+    if (cancelled){ S.sub = null; S.rcvd = false; log(msg || 'Reception cancelled.'); return; }
+    if (ok){
+      S.adj = 0; S.rcvd = true; S.lastRx = now(); S.rcvdKey = dayKey(homeNow());
+      log('Signal received. Time and date corrected. RCVD is shown.');
+    } else { S.rcvd = false; log('No usable signal. The time was left as it was.'); }
+    S.sub = 'rxres'; S.rxRes = {ok:ok, t0:now()}; S.subT0 = now();
+  }
+  function nightSync(){
+    var c = C[S.home], blk = rxBlock(false), res = {blocked:blk, attempts:[], ok:false, hours: c[2]==='CN' ? [1,2,3,4,5] : [0,1,2,3,4,5]};
+    if (blk){ log('Overnight sync skipped. '+blk); return res; }
+    var win = S.signal==='good' ? 0 : (S.signal==='poor' ? 2 : -1), i, f, off, t;
+    for (i=0;i<res.hours.length;i++){ res.attempts.push({h:res.hours[i], ok:i===win}); if (i===win) break; }
+    if (win>=0){
+      S.adj = 0; t = utc(); off = homeOff(t); f = fields(t+off);
+      S.lastRx = Date.UTC(f.y, f.mo-1, f.d, res.hours[win], 4, 0) - off;
+      S.rcvd = true; S.rcvdKey = dayKey(f); res.ok = true; res.at = res.hours[win];
+      log('Overnight sync succeeded at about '+res.hours[win]+':04. Later attempts were cancelled.');
+    } else { S.rcvd = false; log('Overnight sync failed on every attempt. The watch keeps running on its quartz.'); }
+    return res;
+  }
+
+  /* ---------- environment (controls outside the watch) ---------- */
+  function setPower(p){
+    var prev = S.power, sig = S.signal, dark = S.dark;
+    if (p===prev) return;
+    if (prev==='DEAD'){
+      S = defaults(true); S.signal = sig; S.dark = dark;
+      S.adj = (Date.UTC(2021,0,1,0,0,0) - 9*HOUR) - now();
+      log('Power is back. Settings and time were lost. Set the Home City, then sync.');
+    }
+    S.power = p;
+    if (p!=='H' && p!=='M'){
+      S.lightUntil = 0;
+      if (S.beep){ S.beep = null; emit('beep','stop'); }
+      S.rx = null; if (S.sub==='rx' || S.sub==='rxres') S.sub = null;
+      if (S.mode!=='TK' || p!=='L'){ S.mode = 'TK'; S.sub = null; }
+    }
+    if (p==='DEAD'){ S.sw.run = false; S.tm.run = false; S.sleep = 0; held = {}; log('Battery flat. The display is blank.'); }
+    else if (p==='CHG') log('CHG flashes. Every function is off until the watch charges.');
+    else if (p==='L') log('Charge low. Light, sounds, reception and the other modes are off.');
+  }
+  function setSleep(n){
+    if (n===0){ if (S.sleep) wake(); return true; }
+    if (S.power==='DEAD' || S.power==='CHG') return false;
+    if (!S.ps){ log('Power saving is switched off in settings, so the watch stays awake.'); return false; }
+    if (S.mode==='ST' || S.mode==='TR'){ log('The watch does not enter power saving in '+NAME[S.mode]+' mode.'); return false; }
+    S.sleep = n; S.sub = null; S.dark = true; S.lightUntil = 0; S.rx = null;
+    log(n===1 ? 'Power saving level 1. Display off. Clock, alarms and overnight sync still run.' : 'Power saving level 2. Everything is off except the clock.');
+    return true;
+  }
+  function setDark(d){ S.dark = !!d; if (!d && S.sleep){ S.sleep = 0; log('Bright light woke the watch.'); } }
+  function setTilt(deg){ var was = S.tilt; S.tilt = deg; if (was<40 && deg>=40) return autoLightTry(); return false; }
+  function fireAlarm(){
+    if (!powered()){ log('Alarm muted: the charge is too low.'); return false; }
+    if (S.sleep===2){ log('Alarm muted in power saving level 2.'); return false; }
+    log('Alarm tone for 10 s. Any button stops it.');
+    return beep('alarm');
+  }
+  function normalize(){
+    held = {}; S.sub = null; S.rx = null; S.banner = null; S.sleep = 0;
+    if (S.beep){ S.beep = null; emit('beep','stop'); }
+    if (!powered()){ setPower('H'); log('Charge set to H so the watch can respond.'); }
+    S.mode = 'TK'; S.lastOp = now();
+  }
+  function jump(m){ normalize(); if (m!=='TK') setMode(m); }
+  function gotoSlot(i){ normalize(); S.wtSel = i; setMode('WT'); }
+  function setSlotCity(i, c){ S.wt[i].c = c; S.wt[i].dst = ruleDst(C[c][3], C[c][1], utc()); }
+  function setHomeCity(c){ S.home = c; S.homeDst = C[c][2] ? 'auto' : 'off'; S.rcvd = false; }
+  function reset(){ held = {}; S = defaults(false); seedLastRx(); emit('beep','stop'); }
+
+  /* ---------- buttons ---------- */
+  function act(l, f, down, ms){ return {l:l, f:f, down:!!down, ms:ms||0, dis:null, quiet:false}; }
+  function run(a){ if (a.dis){ log(a.dis); return; } if (a.f) a.f(); key(); }
+  function resolve(b){
+    var r = {p:null, h:null, rep:false}, m = S.mode, set = S.sub==='set', low = S.power==='L', x, i, t, blk;
+    if (S.power==='DEAD' || S.power==='CHG') return r;
+    if (S.sleep){ r.p = act('Wake the display', wake, true); return r; }
+    if (beeping() && S.beep.kind!=='sig'){ r.p = act('Stop the tone', stopBeep, true); return r; }
+    if (S.sub==='rx'){ r.p = act('Cancel reception', function(){ endRx(false, true); }, true); return r; }
+    if (S.sub==='rxres'){ r.p = act('Back to the time', function(){ S.sub = null; }, true); return r; }
+
+    if (b==='C'){
+      if (set){
+        if (m==='TK') r.p = act('Next item: '+SET[(S.setIdx+1)%15].n, nextSet, true);
+        else if (m==='WT'){
+          if (S.wtStage==='dst' || C[S.wt[S.wtSel].c][0]!=='UTC')
+            r.p = act(S.wtStage==='city' ? 'Go to summer time' : 'Back to city', function(){ S.wtStage = S.wtStage==='city' ? 'dst' : 'city'; S.setT0 = now(); }, true);
+        }
+        else if (m==='AL') r.p = act(S.alStage==='h' ? 'Go to minutes' : 'Back to hours', function(){ S.alStage = S.alStage==='h' ? 'm' : 'h'; }, true);
+        else if (m==='TR') r.p = act(S.tmStage==='h' ? 'Go to minutes' : (S.tmStage==='m' ? 'Go to seconds' : 'Back to hours'), function(){ S.tmStage = S.tmStage==='h' ? 'm' : (S.tmStage==='m' ? 's' : 'h'); }, true);
+        return r;
+      }
+      if (low){ r.p = act('Change mode', null, true); r.p.dis = 'The other modes are off while the charge is low.'; return r; }
+      x = ORDER[(ORDER.indexOf(m)+1)%5];
+      r.p = act('Go to '+NAME[x], (function(n){ return function(){ setMode(n); }; })(x), true);
+      r.h = act('Return to Timekeeping', function(){ setMode('TK'); }, false, 1000);
+      r.h.quiet = (m==='TK' || x==='TK');
+      return r;
+    }
+
+    if (b==='B'){
+      if (set){
+        if (m==='TK'){ if (SET[S.setIdx].b){ r.p = act(SET[S.setIdx].b, function(){ adjust(-1); }, true); r.rep = true; } }
+        else if (m==='WT'){ if (S.wtStage==='city'){ r.p = act('Previous city', function(){ adjust(-1); }, true); r.rep = true; } }
+        else if (m==='AL'){ r.p = act(S.alStage==='h' ? 'Hour down' : 'Minute down', function(){ adjust(-1); }, true); r.rep = true; }
+        else if (m==='TR'){ r.p = act(S.tmStage==='h' ? 'Hour down' : (S.tmStage==='m' ? 'Minute down' : 'Second down'), function(){ adjust(-1); }, true); r.rep = true; }
+        return r;
+      }
+      r.p = act('Light for '+S.lightDur+' s', light, true);
+      if (low) r.p.dis = 'Light is off while the charge is low.';
+      if (m==='TK' && !S.sub && !low) r.h = act(S.autoLight ? 'Switch auto light off' : 'Switch auto light on', toggleAutoLight, false, 3000);
+      return r;
+    }
+
+    if (b==='D'){
+      if (set){
+        if (m==='TK'){ r.p = act(SET[S.setIdx].d, function(){ adjust(1); }, true); r.rep = !!SET[S.setIdx].rep; }
+        else if (m==='WT'){ r.p = act(S.wtStage==='city' ? 'Next city' : 'Switch summer time OFF / ON', function(){ adjust(1); }, true); r.rep = S.wtStage==='city'; }
+        else if (m==='AL'){ r.p = act(S.alStage==='h' ? 'Hour up' : 'Minute up', function(){ adjust(1); }, true); r.rep = true; }
+        else if (m==='TR'){ r.p = act(S.tmStage==='h' ? 'Hour up' : (S.tmStage==='m' ? 'Minute up' : 'Second up'), function(){ adjust(1); }, true); r.rep = true; }
+        return r;
+      }
+      if (m==='TK'){
+        if (S.sub==='lastrx'){ r.p = act('Back to the time', function(){ S.sub = null; }, true); return r; }
+        r.p = act('Show the last sync result', function(){ S.sub = 'lastrx'; S.subT0 = now(); }, false);
+        r.h = act('Receive the time signal now', startRx, false, 2000);
+        blk = rxBlock(true); if (blk) r.h.dis = blk;
+        return r;
+      }
+      if (m==='WT'){ r.p = act('Next world time slot', nextSlot, true); return r; }
+      if (m==='AL'){ r.p = act('Next alarm item', function(){ S.alSel = (S.alSel+1)%6; }, true); return r; }
+      if (m==='ST'){ r.p = act(S.sw.run ? 'Stop' : (S.sw.acc ? 'Resume' : 'Start'), swStartStop, true); return r; }
+      if (m==='TR'){ r.p = act(S.tm.run ? 'Pause' : (S.tm.left<tmFull() ? 'Resume' : 'Start'), tmStartStop, true); return r; }
+    }
+
+    if (b==='A'){
+      if (set){ r.p = act('Save and exit', exitSet, true); return r; }
+      if (m==='TK'){
+        if (S.sub==='lastrx'){ r.p = act('Back to the time', function(){ S.sub = null; }, true); return r; }
+        r.h = act('Open settings', enterSetTK, false, 2000); return r;
+      }
+      if (m==='WT'){ r.h = act('Change the city in this slot', function(){ S.sub = 'set'; S.wtStage = 'city'; S.setT0 = now(); S.banner = null; }, false, 2000); return r; }
+      if (m==='AL'){
+        i = S.alSel;
+        r.p = act('Switch '+alName(i)+(alOn(i) ? ' off' : ' on'), toggleAl, i===5);
+        if (i<5) r.h = act('Set the time of '+alName(i), function(){ S.sub = 'set'; S.alStage = 'h'; S.al[S.alSel].on = true; }, false, 2000);
+        return r;
+      }
+      if (m==='ST'){ r.p = act(swALabel(), swA, true); return r; }
+      if (m==='TR'){
+        t = S.tm;
+        if (t.run) return r;
+        if (t.left<tmFull()) r.p = act('Reset to the start time', function(){ S.tm.left = tmFull(); }, true);
+        else r.h = act('Set the countdown time', function(){ S.sub = 'set'; S.tmStage = 'h'; }, false, 2000);
+        return r;
+      }
+    }
+    return r;
+  }
+  function down(b){
+    if (held[b]) return;
+    var a = resolve(b), h = held[b] = {t:now(), a:a, fired:false, rep:0};
+    var other = b==='A' ? 'B' : (b==='B' ? 'A' : null);
+    S.lastOp = now();
+    if (other && held[other] && comboAvail()){ held[other].fired = true; h.fired = true; h.a = {p:null, h:null, rep:false}; swap(); key(); return; }
+    if (a.p && a.p.down) run(a.p);
+  }
+  function up(b){
+    var h = held[b]; if (!h) return;
+    delete held[b];
+    if (!h.fired && h.a.p && !h.a.p.down) run(h.a.p);
+  }
+  function holdInfo(b){
+    var h = held[b];
+    if (!h || !h.a.h) return {p:0, fired:false};
+    return {p: h.fired ? 1 : Math.min(1, (now()-h.t)/h.a.h.ms), fired:h.fired};
+  }
+  function doPress(b){ var a = resolve(b); S.lastOp = now(); if (a.p) run(a.p); return !!a.p; }
+  function doHold(b){
+    var a = resolve(b); S.lastOp = now();
+    if (a.p && a.p.down && !a.rep && !a.p.dis) run(a.p);
+    if (a.h) run(a.h);
+    return !!a.h;
+  }
+  function combo(){ if (!comboAvail()) return false; S.lastOp = now(); swap(); key(); return true; }
+
+  function tick(){
+    var t = now(), k, h, H, mk, i, hit;
+    for (k in held){
+      h = held[k];
+      if (h.a.h && !h.fired && t-h.t >= h.a.h.ms){ h.fired = true; run(h.a.h); }
+      if (h.a.rep && h.a.p && !h.a.p.dis && t-h.t >= 450 && t-h.rep >= 110){ h.rep = t; h.a.p.f(); S.lastOp = t; }
+    }
+    if (S.power==='DEAD') return;
+    if (S.sub==='rx' && S.rx && t-S.rx.t0 >= S.rx.dur) endRx(S.signal==='good', false);
+    if (S.sub==='rxres' && t-S.rxRes.t0 >= 4500) S.sub = null;
+    if (S.tm.run && t >= S.tm.end){ S.tm.run = false; S.tm.left = tmFull(); log('Countdown finished. Tone for 10 s.'); beep('timer'); }
+    H = homeNow(); mk = dayKey(H)*1440 + H.h*60 + H.mi;
+    if (S.lastMin===null) S.lastMin = mk;
+    else if (mk!==S.lastMin){
+      S.lastMin = mk;
+      if (!(S.mode==='TK' && S.sub==='set')){
+        hit = false;
+        for (i=0;i<4;i++) if (S.al[i].on && S.al[i].h===H.h && S.al[i].m===H.mi) hit = true;
+        if (S.al[4].on && S.al[4].h===H.h && S.al[4].m===H.mi){ hit = true; S.snz = {left:6, next:t+5*60e3}; }
+        if (hit){ log('Alarm time reached.'); beep('alarm'); }
+        else if (S.sig && H.mi===0) beep('sig');
+      }
+    }
+    if (S.snz && t >= S.snz.next){
+      if (S.al[4].on){ beep('alarm'); S.snz.left--; S.snz.next = t+5*60e3; if (S.snz.left<=0) S.snz = null; }
+      else S.snz = null;
+    }
+    if (S.beep && t >= S.beep.until) S.beep = null;
+    if (t-S.lastOp > 150e3){
+      if (S.sub==='set' || S.sub==='lastrx'){ S.sub = null; log('No press for over two minutes. The screen closed by itself.'); }
+      else if (S.mode==='AL'){ S.mode = 'TK'; log('Alarm mode returned to Timekeeping by itself.'); }
+      S.lastOp = t;
+    }
+  }
+
+  /* ---------- what the LCD shows ---------- */
+  function hm(f){
+    var h = f.h, pm = false;
+    if (!S.h24){ pm = h>=12; h = h%12; if (h===0) h = 12; }
+    return {big:s2(h)+p2(f.mi), P:pm, win:f2(h)+':'+p2(f.mi)};
+  }
+  function dateStr(f){ return S.dateFmt==='MD' ? f2(f.mo)+'.'+f2(f.d) : f2(f.d)+'.'+f2(f.mo); }
+  function view(){
+    var t = now(), I = {}, v = {off:false, lit:false, tl:'', tlF:false, win:{text:''}, big:'    ', bigF:[false,false],
+        colon:false, prime:false, dprime:false, small:'  ', smallF:false, ind:I};
+    var H, x, i, w, F, a, e, cs, s, hA, R, alt, dst;
+    if (S.power==='DEAD' || S.sleep){ v.off = true; return v; }
+    if (S.power==='CHG'){ v.win = {text:'CHG', flash:true}; return v; }
+    v.lit = t < S.lightUntil;
+    H = homeNow(); x = hm(H); dst = homeDstOn(utc());
+    I[S.power] = S.power==='L' ? 2 : 1;
+    I.PS = S.ps ? 1 : 0; I.MUTE = S.tone ? 0 : 1; I.LT = S.autoLight ? 1 : 0;
+    I.RCVD = (S.rcvd && S.rcvdKey===dayKey(H)) ? 1 : 0;
+    I.ALM = (S.al[0].on || S.al[1].on || S.al[2].on || S.al[3].on) ? 1 : 0;
+    I.SNZ = S.al[4].on ? (S.snz ? 2 : 1) : 0;
+    I.SIG = S.sig ? 1 : 0;
+
+    hA = held.A;
+    if (hA && !hA.fired && hA.a.h && S.mode==='TK' && !S.sub && t-hA.t > 220){
+      v.win = {text:'SET'}; v.big = 'Hold'; v.bigF = [true,true]; return v;
+    }
+
+    if (S.mode==='TK'){
+      v.tl = DOW[S.lang][H.dow]; v.win = {text:dateStr(H)}; v.big = x.big; v.colon = true; v.small = p2(H.s);
+      I.P = x.P ? 1 : 0; I.DST = dst ? 1 : 0;
+      if (S.sub==='rx'){ v.tl = 'RC'; v.win = {text:''}; I.RCVD = 2; i = rxLevel(); v.small = i ? 'L'+i : '  '; return v; }
+      if (S.sub==='rxres' && !S.rxRes.ok){ v.win = {text:'ERR'}; return v; }
+      if (S.sub==='lastrx' || S.sub==='rxres'){
+        v.tl = ''; v.small = '  '; alt = Math.floor((t-S.subT0)/1100)%2===0;
+        if (S.lastRx===null){ v.win = {text:'GET'}; v.big = ' ---'; I.P = 0; }
+        else { R = fields(S.lastRx + homeOff(S.lastRx)); a = hm(R); v.win = {text: alt ? 'GET' : dateStr(R)}; v.big = a.big; I.P = a.P ? 1 : 0; }
+        return v;
+      }
+      if (S.sub==='set'){
+        i = S.setIdx;
+        if (i===0){ v.tl = 'HT'; v.tlF = true; v.win = {text:C[S.home][0], scroll:true, loop:true, t0:S.setT0}; }
+        else if (i===1){ v.tl = ''; v.win = {text: S.homeDst==='auto' ? 'AUTO' : (S.homeDst==='on' ? 'ON' : 'OFF'), flash:true}; }
+        else if (i===2) v.smallF = true;
+        else if (i===3) v.bigF = [true,false];
+        else if (i===4) v.bigF = [false,true];
+        else if (i===5){ v.big = String(H.y); v.colon = false; v.bigF = [true,true]; v.small = '  '; I.P = 0; }
+        else if (i===6 || i===7) v.win = {text:dateStr(H), flash: ((S.dateFmt==='MD') === (i===6)) ? [0,2] : [3,5]};
+        else if (i===8){ v.tl = ''; v.win = {text: S.h24 ? '24H' : '12H', flash:true}; }
+        else {
+          v.tl = ''; v.big = '    '; v.colon = false; v.small = '  '; I.P = 0;
+          if (i===9) v.win = {text: S.dateFmt==='MD' ? 'M.DD' : 'DD.M', flash:true};
+          else if (i===10) v.win = {text:LANG[S.lang], flash:true};
+          else if (i===11) v.win = {text: S.tone ? 'KEY♪' : 'MUTE', flash:true};
+          else if (i===12){ v.win = {text:'LIGHT', scroll:true, loop:true, t0:S.setT0}; v.big = '  '+(S.lightDur===3 ? '3' : '1')+' '; v.bigF = [false,true]; }
+          else if (i===13){ v.win = {text:'RECEIVING', scroll:true, loop:true, t0:S.setT0}; v.big = (S.autoRx && C[S.home][2]) ? ' On ' : ' OFF'; v.bigF = [true,true]; }
+          else { v.win = {text:'POWER SAVING', scroll:true, loop:true, t0:S.setT0}; v.big = S.ps ? ' On ' : ' OFF'; v.bigF = [true,true]; }
+        }
+        return v;
+      }
+      if (S.power==='L' && Math.floor(t/1200)%2===0) v.win = {text:'LOW'};
+      return v;
+    }
+
+    if (S.mode==='WT'){
+      w = S.wt[S.wtSel]; F = slotNow(S.wtSel); a = hm(F);
+      v.tl = 'WT'; v.big = a.big; v.colon = true; v.small = p2(F.s); I.P = a.P ? 1 : 0; I.DST = w.dst ? 1 : 0;
+      if (S.sub==='set'){
+        if (S.wtStage==='city'){ v.tlF = true; v.win = {text:C[w.c][0], scroll:true, loop:true, t0:S.setT0}; }
+        else v.win = {text: w.dst ? 'ON' : 'OFF', flash:true};
+      }
+      else if (S.banner && t < S.banner.t0+S.banner.aMs) v.win = {text:S.banner.a};
+      else if (S.banner && t < S.banner.t0+S.banner.aMs+S.banner.bMs) v.win = {text:S.banner.b, scroll:true, loop:false, t0:S.banner.t0+S.banner.aMs};
+      else v.win = {text:x.win};
+      return v;
+    }
+
+    if (S.mode==='AL'){
+      i = S.alSel; v.tl = 'AL'; v.colon = true;
+      v.win = {text: i<4 ? '-'+(i+1)+'-' : (i===4 ? 'SNZ' : 'SIG')};
+      if (i<5){
+        a = hm({h:S.al[i].h, mi:S.al[i].m}); v.big = a.big; I.P = a.P ? 1 : 0; v.small = S.al[i].on ? 'on' : '--';
+        if (S.sub==='set') v.bigF = S.alStage==='h' ? [true,false] : [false,true];
+      } else { v.big = '  00'; v.small = S.sig ? 'on' : '--'; }
+      return v;
+    }
+
+    if (S.mode==='ST'){
+      e = S.sw.split!==null ? S.sw.split : swTime();
+      v.tl = 'ST'; v.win = {text: S.sw.split!==null ? 'SPL' : x.win};
+      if (e < HOUR){ cs = Math.floor(e/10); v.big = p2(Math.floor(cs/6000))+p2(Math.floor(cs/100)%60); v.prime = true; v.dprime = true; v.small = p2(cs%100); }
+      else { s = Math.floor(e/1000); v.big = s2(Math.floor(s/3600))+p2(Math.floor(s/60)%60); v.colon = true; v.small = p2(s%60); }
+      return v;
+    }
+
+    /* Timer */
+    s = S.sub==='set' ? S.tm.start : Math.ceil(tmLeft()/1000) % 86400;
+    v.tl = 'TR'; v.win = {text:x.win}; v.colon = true;
+    v.big = s2(Math.floor(s/3600))+p2(Math.floor(s/60)%60); v.small = p2(s%60);
+    if (S.sub==='set'){ if (S.tmStage==='h') v.bigF = [true,false]; else if (S.tmStage==='m') v.bigF = [false,true]; else v.smallF = true; }
+    return v;
+  }
+
+  /* ---------- descriptions for the panel under the watch ---------- */
+  function actions(){
+    var o = {}, bs = ['A','B','C','D'], i, a;
+    for (i=0;i<4;i++){
+      a = resolve(bs[i]);
+      o[bs[i]] = {
+        press: a.p ? {label:a.p.l, dis:a.p.dis, rep:a.rep} : null,
+        hold: (a.h && !a.h.quiet) ? {label:a.h.l, ms:a.h.ms, dis:a.h.dis} : null
+      };
+    }
+    o.combo = comboAvail() ? {label:'Swap Home City with this slot', dis:null} : null;
+    return o;
+  }
+  function setValue(i){
+    var H = homeNow();
+    switch(i){
+      case 0: return C[S.home][0];
+      case 1: return S.homeDst.toUpperCase();
+      case 2: return p2(H.s);
+      case 3: return String(H.h);
+      case 4: return p2(H.mi);
+      case 5: return String(H.y);
+      case 6: return String(H.mo);
+      case 7: return String(H.d);
+      case 8: return S.h24 ? '24H' : '12H';
+      case 9: return S.dateFmt==='MD' ? 'M.DD' : 'DD.M';
+      case 10: return LANG[S.lang];
+      case 11: return S.tone ? 'KEY♪' : 'MUTE';
+      case 12: return S.lightDur+' s';
+      case 13: return (S.autoRx && C[S.home][2]) ? 'On' : 'OFF';
+      default: return S.ps ? 'On' : 'OFF';
+    }
+  }
+  function status(){
+    var m = S.mode, home = C[S.home][0], w, cn, i, t;
+    if (S.power==='DEAD') return ['No power', 'Battery flat. The display is blank and the settings are lost.'];
+    if (S.power==='CHG') return ['Charge critical', 'CHG flashes. Every function is off until the watch charges.'];
+    if (S.sleep===1) return ['Power saving · level 1', 'Display off. Clock, alarms and overnight sync still run. Any button wakes it.'];
+    if (S.sleep===2) return ['Power saving · level 2', 'Everything is off except the clock. Any button or bright light wakes it.'];
+    if (beeping() && S.beep.kind!=='sig') return [S.beep.kind==='timer' ? 'Timer tone' : 'Alarm tone', 'Sounds for 10 seconds. Any button stops it.'];
+    if (S.sub==='rx'){ i = rxLevel(); return ['Receiving time signal', (i ? 'Signal level L'+i+' of L3.' : 'Signal unstable.')+' Keep the watch still.']; }
+    if (S.sub==='rxres') return S.rxRes.ok ? ['Sync complete', 'GET alternates with the date. The digits show the time of the sync.'] : ['Sync failed', 'No usable signal. The time was left as it was.'];
+    if (m==='TK'){
+      if (S.sub==='set') return ['Settings · item '+(S.setIdx+1)+' of 15', SET[S.setIdx].n+': '+setValue(S.setIdx)];
+      if (S.sub==='lastrx') return ['Last sync result', S.lastRx===null ? 'No successful sync is stored.' : 'GET alternates with the date. The digits show the time of the last successful sync.'];
+      return ['Timekeeping', 'Home City '+home+(S.power==='L' ? '. Charge low: light, sounds, sync and other modes are off.' : '.')];
+    }
+    if (m==='WT'){
+      w = S.wt[S.wtSel]; cn = C[w.c][0];
+      if (S.sub==='set') return ['World Time · editing slot '+(S.wtSel+1), S.wtStage==='city' ? 'City: '+cn : 'Summer time: '+(w.dst ? 'ON' : 'OFF')];
+      return ['World Time · slot '+(S.wtSel+1)+' of 5', cn+(w.dst ? ', summer time on' : '')+'. The window shows Home time.'];
+    }
+    if (m==='AL'){
+      i = S.alSel;
+      if (S.sub==='set') return ['Alarm · setting '+alName(i), S.alStage==='h' ? 'Hours flash.' : 'Minutes flash.'];
+      return ['Alarm · '+alName(i), alOn(i) ? 'Switched on.' : 'Switched off.'];
+    }
+    if (m==='ST') return ['Stopwatch', S.sw.split!==null ? 'Split frozen on the display. Timing '+(S.sw.run ? 'continues.' : 'has stopped.') : (S.sw.run ? 'Running.' : (S.sw.acc ? 'Stopped.' : 'Ready.'))];
+    t = S.tm;
+    if (S.sub==='set') return ['Timer · setting start time', S.tmStage==='h' ? 'Hours flash.' : (S.tmStage==='m' ? 'Minutes flash.' : 'Seconds flash.')];
+    return ['Timer', t.run ? 'Counting down.' : (t.left<tmFull() ? 'Paused.' : 'Ready.')];
+  }
+
+  S = defaults(false);
+  seedLastRx();
+
+  return {
+    down:down, up:up, tick:tick, view:view, actions:actions, status:status, holdInfo:holdInfo,
+    doPress:doPress, doHold:doHold, combo:combo,
+    setPower:setPower, setSleep:setSleep, setDark:setDark, setTilt:setTilt, fireAlarm:fireAlarm,
+    nightSync:nightSync, rxChecks:rxChecks, autoLightChecks:autoLightChecks,
+    normalize:normalize, jump:jump, gotoSlot:gotoSlot, setSlotCity:setSlotCity, setHomeCity:setHomeCity, reset:reset,
+    setValue:setValue, slotNow:slotNow, homeNow:homeNow, hm:hm, cols:cols,
+    dstNow:function(i){ return ruleDst(C[i][3], C[i][1], utc()); }, ruleDst:ruleDst,
+    cities:C, tx:TX, setMeta:SET, modeNames:NAME,
+    get state(){ return S; }
+  };
+}
+if (typeof module !== 'undefined' && module.exports) module.exports = createWatch;
+</script>
+<script>
+/* Interface for the simulator: draws the LCD, wires buttons, panels and demos. */
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var wideMQ = window.matchMedia ? window.matchMedia('(min-width: 1000px)') : null;
+  var BTNS = ['A','B','C','D'];
+  var logEl = $('log');
+  var W = createWatch({emit:onEmit});
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function setText(el, s){ if (el._t!==s){ el._t = s; el.textContent = s; } }
+  function setAttr(el, k, v){ var key = '_a_'+k; if (el[key]!==v){ el[key] = v; el.setAttribute(k, v); } }
+  function setCls(el, c, on){ var key = '_c_'+c; on = !!on; if (el[key]!==on){ el[key] = on; el.classList.toggle(c, on); } }
+  function mk(tag, at, parent){ var e = document.createElementNS(NS, tag), k; for (k in at) e.setAttribute(k, at[k]); if (parent) parent.appendChild(e); return e; }
+  function each(sel, fn){ Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
+
+  /* ---------- log and sound ---------- */
+  function addLog(m){
+    var li = document.createElement('li'); li.textContent = m;
+    logEl.insertBefore(li, logEl.firstChild);
+    while (logEl.children.length>4) logEl.removeChild(logEl.lastChild);
+  }
+  var AC = null, soundOn = false, nodes = [];
+  function tone(t0, dur, vol){
+    var o = AC.createOscillator(), g = AC.createGain();
+    o.type = 'square'; o.frequency.value = 4096; g.gain.value = vol;
+    o.connect(g); g.connect(AC.destination); o.start(t0); o.stop(t0+dur);
+    nodes.push(o); o.onended = function(){ var i = nodes.indexOf(o); if (i>=0) nodes.splice(i,1); };
+  }
+  function sound(kind){
+    var t, i, j;
+    if (kind==='stop'){ nodes.slice().forEach(function(o){ try{ o.stop(); }catch(e){} }); nodes = []; return; }
+    if (!soundOn || !AC) return;
+    t = AC.currentTime+0.02;
+    if (kind==='key') tone(t, 0.035, 0.03);
+    else if (kind==='sig'){ tone(t, 0.06, 0.04); tone(t+0.16, 0.06, 0.04); }
+    else for (i=0;i<10;i++) for (j=0;j<4;j++) tone(t+i+j*0.12, 0.06, 0.04);
+  }
+  function onEmit(type, d){ if (type==='log') addLog(d); else if (type==='beep') sound(d); }
+
+  /* ---------- LCD construction ---------- */
+  var lcd = $('lcd'), IND = {};
+  mk('rect', {'class':'lcd-bg', width:216, height:138, rx:5}, lcd);
+  mk('rect', {'class':'lcd-glow', width:216, height:138, rx:5, fill:'url(#litg)'}, lcd);
+  mk('rect', {'class':'lcd-frame', x:108, y:5, width:100, height:31, rx:3}, lcd);
+  mk('path', {'class':'lcd-rule', d:'M6 117.5H210M106 117.5V133'}, lcd);
+  function ind(key, x, y, txt, size){ var e = mk('text', {'class':'ind', x:x, y:y, 'font-size':size||8.5}, lcd); e.textContent = txt; IND[key] = e; }
+  ind('RCVD', 6, 15, 'RCVD'); ind('PS', 6, 26, 'PS'); ind('P', 9, 73, 'P', 11); ind('DST', 177, 50, 'DST'); ind('LT', 190, 62, 'LT');
+  IND.MUTE = mk('g', {'class':'ind'}, lcd);
+  mk('path', {d:'M167 42.5v9M167 42.5l4.6 2', fill:'none', stroke:'currentColor', 'stroke-width':1.3}, IND.MUTE);
+  mk('ellipse', {cx:165.2, cy:52, rx:2.3, ry:1.8}, IND.MUTE);
+  mk('path', {d:'M160.5 55.5L173 41', fill:'none', stroke:'currentColor', 'stroke-width':1.2}, IND.MUTE);
+  function bar(key, x){ IND[key] = mk('rect', {'class':'ind', x:x, y:123, width:22, height:4.5, rx:0.6}, lcd); }
+  bar('SNZ',14); bar('ALM',42); bar('SIG',70); bar('L',122); bar('M',150); bar('H',178);
+
+  var mg = mk('g', {transform:'translate(0 33.2) skewX(-6) translate(0 -33.2)'}, lcd);
+  function matrix(x, y, n){
+    var m = {n:n, el:[], st:[]}, r, c;
+    for (c=0;c<n;c++){ m.el[c] = []; m.st[c] = 0; for (r=0;r<7;r++) m.el[c][r] = mk('rect', {'class':'dot', x:(x+c*3.6).toFixed(1), y:(y+r*3.6).toFixed(1), width:3.7, height:3.3, rx:0.7}, mg); }
+    return m;
+  }
+  function paint(m, out){
+    var c, r, d, bits;
+    for (c=0;c<m.n;c++){
+      bits = out[c]|0; d = bits ^ m.st[c]; if (!d) continue;
+      for (r=0;r<7;r++) if ((d>>r)&1) m.el[c][r].classList.toggle('on', !!((bits>>r)&1));
+      m.st[c] = bits;
+    }
+  }
+  var TL = matrix(46, 8, 11), WIN = matrix(113, 8, 25);
+
+  function segPaths(w, h, t){
+    var g = t*0.14, k = t/2, m = h/2;
+    function hz(y){ var a = k+g, b = w-k-g; return 'M'+a+' '+y+'L'+(a+k)+' '+(y-k)+'L'+(b-k)+' '+(y-k)+'L'+b+' '+y+'L'+(b-k)+' '+(y+k)+'L'+(a+k)+' '+(y+k)+'Z'; }
+    function vt(x, a, b){ return 'M'+x+' '+a+'L'+(x+k)+' '+(a+k)+'L'+(x+k)+' '+(b-k)+'L'+x+' '+b+'L'+(x-k)+' '+(b-k)+'L'+(x-k)+' '+(a+k)+'Z'; }
+    return {a:hz(k), g:hz(m), d:hz(h-k), f:vt(k,k+g,m-g), b:vt(w-k,k+g,m-g), e:vt(k,m+g,h-k-g), c:vt(w-k,m+g,h-k-g)};
+  }
+  var dg = mk('g', {transform:'translate(0 112) skewX(-6) translate(0 -112)'}, lcd);
+  function digit(x, y, w, h, t){
+    var p = segPaths(w, h, t), g = mk('g', {transform:'translate('+x+' '+y+')'}, dg), o = {s:{}, cur:' '}, k;
+    for (k in p) o.s[k] = mk('path', {'class':'seg7', d:p[k]}, g);
+    return o;
+  }
+  var BIG = [digit(27,60,25,52,6.8), digit(57,60,25,52,6.8), digit(97,60,25,52,6.8), digit(127,60,25,52,6.8)];
+  var SML = [digit(166,80,16,32,4.5), digit(187,80,16,32,4.5)];
+  var COLON = mk('path', {'class':'seg7', d:'M87 75h5.6v5.6H87zM87 93h5.6v5.6H87z'}, dg);
+  var PRIME = mk('path', {'class':'seg7', d:'M87 60h4.6l-1.3 10h-2.4z'}, dg);
+  var DPRIME = mk('path', {'class':'seg7', d:'M155.6 80h2.1l-.6 7h-1.2zM159.1 80h2.1l-.6 7h-1.2z'}, dg);
+  var SEG = {'0':'abcdef','O':'abcdef','1':'bc','l':'bc','2':'abdeg','3':'abcdg','4':'bcfg','5':'acdfg','6':'acdefg','7':'abc','8':'abcdefg','9':'abcdfg',
+             'H':'bcefg','o':'cdeg','n':'ceg','d':'bcdeg','F':'aefg','L':'def','-':'g',' ':''};
+  function setDigit(o, ch){ if (o.cur===ch) return; o.cur = ch; var on = SEG[ch]||'', k; for (k in o.s) o.s[k].classList.toggle('on', on.indexOf(k)>=0); }
+
+  /* 5x7 characters for the two dot-matrix areas: seven rows per glyph, two hex digits per row */
+  var GL = {A:'0E11111F111111',B:'1E11111E11111E',C:'0E11101010110E',D:'1E11111111111E',E:'1F10101E10101F',F:'1F10101E101010',
+    G:'0E11101711110F',H:'1111111F111111',I:'0E04040404040E',J:'0702020202120C',K:'11121418141211',L:'1010101010101F',
+    M:'111B1515111111',N:'11111915131111',O:'0E11111111110E',P:'1E11111E101010',Q:'0E11111115120D',R:'1E11111E141211',
+    S:'0F10100E01011E',T:'1F040404040404',U:'1111111111110E',V:'11111111110A04',W:'1111111515150A',X:'11110A040A1111',
+    Y:'1111110A040404',Z:'1F01020408101F','0':'0E11131519110E','1':'040C040404040E','2':'0E11010204081F','3':'1F02040201110E',
+    '4':'02060A121F0202','5':'1F101E0101110E','6':'0608101E11110E','7':'1F010204080808','8':'0E11110E11110E','9':'0E11110F01020C',
+    '-':'0000001F000000','y':'000011110F010E','♪':'060505040C1C08','П':'1F111111111111','Ч':'1111110F010101','Б':'1F10101E11111E'};
+  var GC = {}, LC = {};
+  function glyph(ch){
+    if (GC[ch]) return GC[ch];
+    var s = GL[ch], c, r, k, row;
+    if (ch==='.') c = [64]; else if (ch===':') c = [20]; else if (ch==="'") c = [3]; else if (ch===' ') c = [0,0,0];
+    else { c = [0,0,0,0,0]; if (s) for (r=0;r<7;r++){ row = parseInt(s.substr(r*2,2),16); for (k=0;k<5;k++) if ((row>>(4-k))&1) c[k] |= (1<<r); } }
+    return (GC[ch] = c);
+  }
+  function lay(text){
+    if (LC[text]) return LC[text];
+    var out = [], starts = [], i, g, k;
+    for (i=0;i<text.length;i++){ starts.push(out.length); g = glyph(text.charAt(i)); for (k=0;k<g.length;k++) out.push(g[k]); if (i<text.length-1) out.push(0); }
+    starts.push(out.length);
+    return (LC[text] = {c:out, s:starts});
+  }
+  var buf25 = [], buf11 = [];
+  function drawWin(w, t, ph){
+    var L = lay(w.text||''), n = L.c.length, i, off, sh, k, per, a, b;
+    for (i=0;i<25;i++) buf25[i] = 0;
+    if (n<=25 || !w.scroll || reduced){
+      off = n<=25 ? Math.floor((25-n)/2) : 0;
+      for (i=0;i<n && i+off<25;i++) buf25[i+off] = L.c[i];
+      if (w.flash && !ph){
+        if (w.flash===true) for (i=0;i<25;i++) buf25[i] = 0;
+        else { a = L.s[w.flash[0]]+off; b = L.s[w.flash[1]]+off; for (i=a;i<b && i<25;i++) buf25[i] = 0; }
+      }
+    } else {
+      sh = t-(w.t0||0); sh = sh<600 ? 0 : Math.floor((sh-600)/45); per = n+14;
+      for (i=0;i<25;i++){ k = w.loop ? (i+sh)%per : i+sh; buf25[i] = k<n ? L.c[k] : 0; }
+    }
+    paint(WIN, buf25);
+  }
+
+  /* ---------- buttons on the watch ---------- */
+  var BTN = {}, RC = 81.7, demo = null;
+  each('#watch .btn', function(g){
+    var b = g.getAttribute('data-b');
+    BTN[b] = {g:g, ring:g.querySelector('.ring')};
+    function dn(e){ if (e) e.preventDefault(); stopDemo(); W.down(b); g.classList.add('held'); }
+    function up(){ W.up(b); g.classList.remove('held'); }
+    g.addEventListener('pointerdown', function(e){ try{ g.setPointerCapture(e.pointerId); }catch(x){} dn(e); });
+    g.addEventListener('pointerup', up); g.addEventListener('pointercancel', up); g.addEventListener('lostpointercapture', up);
+    g.addEventListener('keydown', function(e){ if ((e.key===' ' || e.key==='Enter') && !e.repeat) dn(e); else if (e.key===' ') e.preventDefault(); });
+    g.addEventListener('keyup', function(e){ if (e.key===' ' || e.key==='Enter') up(); });
+    g.addEventListener('blur', up);
+  });
+  $('watch').addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  function typing(e){ var t = e.target; return t && (t.tagName==='INPUT' || t.tagName==='TEXTAREA' || t.tagName==='SELECT' || t.isContentEditable); }
+  document.addEventListener('keydown', function(e){
+    if (e.repeat || e.metaKey || e.ctrlKey || e.altKey || typing(e)) return;
+    var k = (e.key||'').toUpperCase();
+    if (k.length===1 && 'ABCD'.indexOf(k)>=0){ stopDemo(); W.down(k); BTN[k].g.classList.add('held'); }
+  });
+  document.addEventListener('keyup', function(e){
+    var k = (e.key||'').toUpperCase();
+    if (k.length===1 && 'ABCD'.indexOf(k)>=0){ W.up(k); BTN[k].g.classList.remove('held'); }
+  });
+  function pulse(b, long){ var g = BTN[b].g; g.classList.add('demo'); setTimeout(function(){ g.classList.remove('demo'); }, long ? 700 : 230); }
+
+  /* ---------- panel under the watch ---------- */
+  var OP = {}, lastActs = '';
+  BTNS.forEach(function(b){
+    OP[b] = {p:$('op-'+b+'-p'), h:$('op-'+b+'-h')};
+    OP[b].p.addEventListener('click', function(){ if (this.getAttribute('aria-disabled')) return; stopDemo(); pulse(b); W.doPress(b); });
+    OP[b].h.addEventListener('click', function(){ stopDemo(); pulse(b, true); W.doHold(b); });
+  });
+  $('op-combo').addEventListener('click', function(){ stopDemo(); pulse('A'); pulse('B'); W.combo(); });
+  function setOp(el, o, kind, keepWhenEmpty){
+    if (!o){
+      el.hidden = !keepWhenEmpty; el.className = 'op none'; el.setAttribute('aria-disabled','true');
+      el.innerHTML = '<b>'+kind+'</b>No function here'; return;
+    }
+    el.hidden = false; el.className = 'op'+(o.dis ? ' blocked' : ''); el.removeAttribute('aria-disabled');
+    el.innerHTML = '<b>'+kind+(o.rep ? ' · hold to scroll' : '')+'</b>'+esc(o.label)+(o.dis ? '<i>'+esc(o.dis)+'</i>' : '');
+  }
+  function syncActs(){
+    var a = W.actions(), sig = JSON.stringify(a);
+    if (sig===lastActs) return; lastActs = sig;
+    BTNS.forEach(function(b){
+      setOp(OP[b].p, a[b].press, 'Press', true);
+      setOp(OP[b].h, a[b].hold, a[b].hold ? 'Hold '+(a[b].hold.ms/1000)+' s' : 'Hold', false);
+    });
+    $('act-combo').hidden = !a.combo;
+    if (a.combo) setOp($('op-combo'), a.combo, 'A and B together', false);
+  }
+
+  /* ---------- demos ---------- */
+  var demoLine = $('demoline'), stopBtn = $('stopdemo');
+  function tokLabel(s){ return s.combo ? 'A + B' : ((s.hold ? 'hold ' : '')+s.b+(s.n>1 ? ' ×'+s.n : '')); }
+  function scrollToSim(){
+    if (wideMQ && wideMQ.matches) return;
+    var r = $('watchfig').getBoundingClientRect();
+    if (r.top < -20 || r.bottom > window.innerHeight+20) $('sim').scrollIntoView({behavior: reduced ? 'auto' : 'smooth', block:'start'});
+  }
+  function stopDemo(){
+    if (!demo) return;
+    clearTimeout(demo.timer); demo = null; stopBtn.hidden = true;
+    each('#demoline .tok', function(t){ t.classList.remove('cur'); });
+  }
+  function nextStep(){
+    if (!demo) return;
+    if (demo.i>=demo.steps.length){ stopDemo(); return; }
+    var st = demo.steps[demo.i++], s = st.s;
+    each('#demoline .tok', function(t){ t.classList.toggle('cur', t.getAttribute('data-i')===String(st.si)); });
+    if (s.combo){ pulse('A'); pulse('B'); W.combo(); }
+    else if (s.b){ pulse(s.b, !!s.hold); if (s.hold) W.doHold(s.b); else W.doPress(s.b); }
+    demo.timer = setTimeout(nextStep, st.gap);
+  }
+  function runDemo(def){
+    stopDemo();
+    W.normalize(); if (def.pre) def.pre();
+    var steps = [], html = '<span class="ttl">Demo: '+esc(def.t)+'</span>';
+    def.s.forEach(function(s, si){
+      var n = s.n||1, i;
+      if (!s.wait) html += '<span class="tok" data-i="'+si+'">'+esc(tokLabel(s))+'</span>';
+      for (i=0;i<n;i++) steps.push({s:s, si:si, gap: s.wait ? s.wait : (n>3 ? 150 : (s.hold ? 1200 : 640))});
+    });
+    demoLine.innerHTML = html; demoLine.hidden = false; stopBtn.hidden = false;
+    demo = {steps:steps, i:0, timer:0};
+    scrollToSim();
+    demo.timer = setTimeout(nextStep, (wideMQ && wideMQ.matches) ? 450 : 950);
+  }
+  var DEMOS = {
+    rxnow:{t:'receive now', s:[{b:'D',hold:1}]},
+    lastrx:{t:'last sync result', s:[{b:'D'},{wait:4800},{b:'D'}]},
+    autolight:{t:'auto light on or off', s:[{b:'B',hold:1}]},
+    swap:{t:'swap Home and world time', s:[{b:'C'},{wait:4300},{combo:1},{wait:3400},{combo:1},{wait:1600},{b:'C',hold:1}]},
+    wtcity:{t:'change a slot city', s:[{b:'C'},{wait:1300},{b:'A',hold:1},{wait:1500},{b:'D'},{wait:2000},{b:'B'},{wait:1600},{b:'C'},{wait:1600},{b:'A'}]},
+    alarmset:{t:'set alarm 1 to 7:30', pre:function(){ var s = W.state; s.alSel = 0; s.al[0].h = 6; s.al[0].m = 0; s.al[0].on = false; },
+      s:[{b:'C',n:2},{b:'A',hold:1},{b:'D'},{b:'C'},{b:'D',n:30},{b:'A'}]},
+    sig:{t:'hourly signal on or off', pre:function(){ W.state.alSel = 0; }, s:[{b:'C',n:2},{b:'D',n:5},{b:'A'}]},
+    split:{t:'time two finishers', pre:function(){ var w = W.state.sw; w.run = false; w.acc = 0; w.split = null; },
+      s:[{b:'C',n:3},{b:'D'},{wait:2300},{b:'A'},{wait:1900},{b:'D'},{wait:1700},{b:'A'},{wait:2400},{b:'A'}]},
+    timer10:{t:'set and run 10 seconds', pre:function(){ var t = W.state.tm; t.run = false; t.start = 600; t.left = 600e3; },
+      s:[{b:'C',n:4},{b:'A',hold:1},{b:'C'},{b:'B',n:10},{b:'C'},{b:'D',n:10},{b:'A'},{b:'D'}]}
+  };
+  each('[data-demo]', function(el){ el.addEventListener('click', function(){ runDemo(DEMOS[el.getAttribute('data-demo')]); }); });
+  stopBtn.addEventListener('click', stopDemo);
+
+  /* ---------- 01 buttons and modes ---------- */
+  var nodes01 = [], uiFlash = null;
+  each('#loop .node', function(n){ nodes01.push(n); n.addEventListener('click', function(){ stopDemo(); W.jump(n.getAttribute('data-mode')); scrollToSim(); }); });
+  each('#legend .lg', function(n){ n.addEventListener('click', function(){
+    var s = W.state;
+    if (s.power==='DEAD' || s.power==='CHG' || s.sleep) addLog('The display is off. Wake or charge the watch first.');
+    uiFlash = {k:n.getAttribute('data-ind'), until:Date.now()+2800}; scrollToSim();
+  }); });
+
+  /* ---------- 02 radio sync ---------- */
+  var night = $('night'), NM = [], nightTimer = 0, nightOut = $('night-out');
+  (function(){
+    var i, x, g;
+    mk('path', {d:'M40 27v-6h280v6', 'class':'n-ax'}, night);
+    var cap = mk('text', {x:180, y:13, 'text-anchor':'middle', 'class':'n-txt'}, night); cap.textContent = 'AUTO RECEIVE WINDOW';
+    mk('path', {d:'M24 46H336', 'class':'n-ax'}, night);
+    for (i=0;i<6;i++){
+      x = 40+56*i; g = mk('g', {'class':'n-m'}, night);
+      mk('circle', {cx:x, cy:46, r:9}, g);
+      NM.push({g:g, t:mk('text', {x:x, y:46.5}, g)});
+      mk('text', {x:x, y:74, 'text-anchor':'middle', 'class':'n-txt'}, night).textContent = '0'+i+':00';
+    }
+  })();
+  function drawNight(res){
+    clearTimeout(nightTimer);
+    var k = 0, n = res.hours.length;
+    NM.forEach(function(m, h){ m.g.setAttribute('class', 'n-m'+(res.hours.indexOf(h)<0 || res.blocked ? ' skip' : '')); m.t.textContent = res.blocked ? '–' : ''; });
+    if (res.blocked){ setText(nightOut, 'No attempts tonight. '+res.blocked); return; }
+    setText(nightOut, 'Listening…');
+    (function step(){
+      if (k>=res.attempts.length){
+        NM.forEach(function(m, h){ if (res.ok && h>res.at && res.hours.indexOf(h)>=0){ m.g.setAttribute('class','n-m skip'); m.t.textContent = '–'; } });
+        setText(nightOut, res.ok ? 'Synced at about 0'+res.at+':04 on attempt '+res.attempts.length+' of '+n+'. The rest were cancelled. RCVD is on.' :
+          'All '+n+' attempts failed. The watch runs on its quartz until tomorrow night. RCVD is off.');
+        return;
+      }
+      var a = res.attempts[k++], m = NM[a.h];
+      m.g.setAttribute('class', 'n-m '+(a.ok ? 'ok' : 'fail')); m.t.textContent = a.ok ? '✓' : '✕';
+      nightTimer = setTimeout(step, reduced ? 0 : 430);
+    })();
+  }
+  $('night-run').addEventListener('click', function(){ stopDemo(); drawNight(W.nightSync()); });
+  ['good','poor','none'].forEach(function(q){ $('sig-'+q).addEventListener('click', function(){ W.state.signal = q; syncPanels(); }); });
+
+  /* ---------- 03 solar ---------- */
+  var rungs = [], states = [];
+  each('#ladder .rung', function(r){ rungs.push(r); r.addEventListener('click', function(){ stopDemo(); W.setPower(r.getAttribute('data-p')); syncPanels(); }); });
+  each('#psflow .state', function(r){ states.push(r); r.addEventListener('click', function(){ stopDemo(); W.setSleep(+r.getAttribute('data-sleep')); syncPanels(); }); });
+
+  /* ---------- 04 light ---------- */
+  var tilt = $('tilt'), tiltOut = $('tilt-out'), arm = $('gauge-arm'), gauge = $('gauge');
+  tilt.addEventListener('input', function(){ W.setTilt(+tilt.value); syncPanels(); });
+  $('amb-bright').addEventListener('click', function(){ W.setDark(false); syncPanels(); });
+  $('amb-dark').addEventListener('click', function(){ W.setDark(true); syncPanels(); });
+  function drawChecks(el, list){
+    var sig = JSON.stringify(list); if (el._sig===sig) return; el._sig = sig;
+    el.innerHTML = list.map(function(c){ return '<li class="'+(c.ok ? 'ok' : 'no')+'"><span class="s">'+(c.ok ? '✓ OK' : '✕ NO')+'</span><span>'+esc(c.t)+'</span></li>'; }).join('');
+  }
+
+  /* ---------- 05 settings rail ---------- */
+  var SETINFO = [
+    ['Sets the time zone and decides which transmitter the watch listens for. HT flashes at the top left and the city name scrolls in the window.', 'B and D step through the 49 entries. Hold either one to scroll fast.', 'Changing it clears RCVD until the next sync (owner reports).'],
+    ['AUTO follows the summer-time flag in the radio signal. OFF and ON force standard or summer time.', 'D cycles AUTO, OFF and ON.', 'AUTO is only offered when the Home City has a time signal. If the watch is an hour out after the clocks change, run a manual receive.'],
+    ['Lines the seconds up with a reference clock.', 'D resets the seconds to 00. Between 30 and 59 seconds the minute is rounded up.', 'Any manual change to the time or date removes RCVD.'],
+    ['Sets the hour. P marks p.m. in 12-hour mode.', 'B down, D up. Hold to scroll.', ''],
+    ['Sets the minute.', 'B down, D up. Hold to scroll.', ''],
+    ['2000 to 2099. The year is only ever shown on this screen. The day of the week is worked out from the date.', 'B down, D up.', ''],
+    ['Sets the month.', 'B down, D up.', ''],
+    ['Sets the day of the month.', 'B down, D up.', ''],
+    ['Applies to every mode, including alarm times.', 'D switches between 12H and 24H.', ''],
+    ['M.DD is month then day. DD.M is day then month, the UK order.', 'D switches between the two.', 'New on module 3495.'],
+    ['Day-of-week abbreviations in English, Spanish, French, German, Italian or Russian.', 'D steps through ENG, ESP, FRA, DEU, ITA and PyC.', 'New on module 3495.'],
+    ['MUTE silences the beep on button presses only. Alarms, the hourly signal and the timer still sound.', 'D switches between KEY♪ and MUTE.', 'A struck-through note on the display means muted.'],
+    ['How long the light stays on for each press or tilt.', 'D switches between 1 (1.5 seconds) and 3 (3 seconds).', 'The longer setting uses more charge.'],
+    ['Switches the overnight radio sync on or off. The word RECEIVING scrolls in the window.', 'D switches between On and OFF.', 'It cannot be changed while the Home City has no time signal.'],
+    ['Lets the display switch off in the dark at night. POWER SAVING scrolls in the window.', 'D switches between On and OFF.', 'PS on the display means this setting is on. It does not mean the watch is asleep.']
+  ];
+  var rail = $('rail'), RV = [], RLI = [], TOGGLES = {1:1,8:1,9:1,10:1,11:1,12:1,13:1,14:1};
+  W.setMeta.forEach(function(m, i){
+    var li = document.createElement('li'), d = SETINFO[i];
+    li.innerHTML = '<button class="rhead" id="rh-'+i+'" aria-expanded="false" aria-controls="rd-'+i+'"><span class="rc">'+(i ? 'C × '+i : 'First')+'</span><span class="rn">'+esc(m.n)+'</span><span class="rv" id="rv-'+i+'"></span></button>'+
+      '<div class="rdet" id="rd-'+i+'" hidden><p>'+esc(d[0])+'</p><p class="k">'+esc(d[1])+'</p>'+(d[2] ? '<p class="k">'+esc(d[2])+'</p>' : '')+
+      '<div class="row"><button class="chip run" id="rg-'+i+'">Take me there</button>'+(TOGGLES[i] ? '<button class="chip run" id="rt-'+i+'">Change it for me</button>' : '')+'</div></div>';
+    rail.appendChild(li); RLI.push(li); RV.push(li.querySelector('.rv'));
+    li.querySelector('.rhead').addEventListener('click', function(){
+      var open = li.classList.contains('open');
+      RLI.forEach(function(x, j){ x.classList.remove('open'); $('rd-'+j).hidden = true; $('rh-'+j).setAttribute('aria-expanded','false'); });
+      if (!open){ li.classList.add('open'); $('rd-'+i).hidden = false; this.setAttribute('aria-expanded','true'); }
+    });
+    function path(extra){ var s = [{b:'A',hold:1}]; if (i) s.push({b:'C',n:i}); return s.concat(extra||[]); }
+    $('rg-'+i).addEventListener('click', function(){ runDemo({t:'go to '+m.n.toLowerCase(), s:path()}); });
+    if (TOGGLES[i]) $('rt-'+i).addEventListener('click', function(){ runDemo({t:'change '+m.n.toLowerCase(), s:path([{wait:900},{b:'D'},{wait:1300},{b:'A'}])}); });
+  });
+
+  /* ---------- 06 world time ---------- */
+  var slotsEl = $('slots'), SL = [], citiesEl = $('cities'), CB = [], cityMode = 'slot';
+  function fmtOff(o){ var a = Math.abs(o), h = Math.floor(a), m = Math.round((a-h)*60); return 'UTC'+(o===0 ? '±0' : (o<0 ? '−' : '+')+h+(m ? ':'+(m<10?'0':'')+m : '')); }
+  (function(){
+    var i, b;
+    for (i=0;i<5;i++){
+      b = document.createElement('button'); b.className = 'slot'; b.id = 'slot-'+i; b.setAttribute('aria-pressed','false');
+      b.innerHTML = '<b>Slot '+(i+1)+'</b><span class="nm"></span><span class="tm"></span><span class="mt"></span>';
+      slotsEl.appendChild(b); SL.push({b:b, nm:b.querySelector('.nm'), tm:b.querySelector('.tm'), mt:b.querySelector('.mt')});
+      (function(i){ b.addEventListener('click', function(){ stopDemo(); W.gotoSlot(i); syncPanels(); scrollToSim(); }); })(i);
+    }
+    W.cities.forEach(function(c, i){
+      var e = document.createElement('button'); e.className = 'city'; e.id = 'city-'+i;
+      e.innerHTML = '<span class="nm">'+esc(c[0])+'</span><span class="of">'+fmtOff(c[1])+'</span><span class="tx'+(c[2] ? ' has' : '')+'">'+(c[2] ? 'Signal: '+W.tx[c[2]] : 'No time signal')+(W.dstNow(i) ? ' · on summer time now' : '')+'</span>';
+      citiesEl.appendChild(e); CB.push(e);
+      e.addEventListener('click', function(){
+        stopDemo();
+        if (cityMode==='slot'){ var k = W.state.wtSel; W.setSlotCity(k, i); W.gotoSlot(k); addLog(c[0]+' loaded into slot '+(k+1)+'.'); }
+        else { W.setHomeCity(i); W.jump('TK'); addLog('Home City set to '+c[0]+'. RCVD cleared until the next sync.'); }
+        syncPanels(); scrollToSim();
+      });
+    });
+  })();
+  $('cityq').addEventListener('input', function(){ var q = this.value.trim().toUpperCase(); W.cities.forEach(function(c, i){ CB[i].hidden = !!q && c[0].indexOf(q)<0; }); });
+  $('cm-slot').addEventListener('click', function(){ cityMode = 'slot'; syncPanels(); });
+  $('cm-home').addEventListener('click', function(){ cityMode = 'home'; syncPanels(); });
+
+  /* ---------- 07 timing, tools ---------- */
+  $('alarm-now').addEventListener('click', function(){ stopDemo(); W.normalize(); W.fireAlarm(); scrollToSim(); });
+  $('snd').addEventListener('click', function(){
+    soundOn = !soundOn;
+    if (soundOn && !AC){ try{ AC = new (window.AudioContext || window.webkitAudioContext)(); }catch(e){ soundOn = false; } }
+    if (soundOn && AC && AC.state==='suspended' && AC.resume) AC.resume();
+    this.setAttribute('aria-pressed', String(soundOn)); this.textContent = soundOn ? 'Sound on' : 'Sound off';
+    if (soundOn) sound('key'); else sound('stop');
+  });
+  $('rst').addEventListener('click', function(){
+    stopDemo(); W.reset(); logEl.innerHTML = ''; demoLine.hidden = true; uiFlash = null; tilt.value = 0;
+    clearTimeout(nightTimer); NM.forEach(function(m){ m.g.setAttribute('class','n-m'); m.t.textContent = ''; }); setText(nightOut, 'Not run yet.');
+    addLog('Simulator reset.'); syncPanels();
+  });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ var e = es[es.length-1]; $('jump').hidden = e.isIntersecting || e.boundingClientRect.top > 0; }, {threshold:0.2}).observe($('watchfig'));
+  }
+
+  /* ---------- keep panels in step with the watch ---------- */
+  function syncPanels(){
+    var s = W.state, C = W.cities, i, f, x, w, c, lc, bad;
+    setText($('envline'), 'Charge '+(s.power==='DEAD' ? 'flat' : s.power)+' · '+(s.dark ? 'Dark' : 'Bright')+(s.sleep ? ' · Asleep L'+s.sleep : ''));
+    nodes01.forEach(function(n){ setAttr(n, 'aria-current', String(n.getAttribute('data-mode')===s.mode)); });
+    drawChecks($('preflight'), W.rxChecks());
+    ['good','poor','none'].forEach(function(q){ setAttr($('sig-'+q), 'aria-pressed', String(s.signal===q)); });
+    each('#txtable tbody tr', function(tr){ setCls(tr, 'hot', tr.getAttribute('data-tx')===C[s.home][2]); });
+    rungs.forEach(function(r){ setAttr(r, 'aria-pressed', String(r.getAttribute('data-p')===s.power)); });
+    states.forEach(function(r){ setAttr(r, 'aria-current', String(+r.getAttribute('data-sleep')===s.sleep)); });
+    setAttr($('amb-bright'), 'aria-pressed', String(!s.dark)); setAttr($('amb-dark'), 'aria-pressed', String(!!s.dark));
+    if (+tilt.value!==s.tilt) tilt.value = s.tilt;
+    setText(tiltOut, s.tilt+'°'); setAttr(arm, 'transform', 'rotate('+(-s.tilt)+' 50 125)');
+    lc = W.autoLightChecks(); drawChecks($('lt-checks'), lc);
+    bad = null; for (i=0;i<lc.length;i++) if (!lc[i].ok){ bad = lc[i]; break; }
+    setText($('lt-out'), bad ? 'Auto light will not fire. Not met: '+bad.t.charAt(0).toLowerCase()+bad.t.slice(1)+'.' : 'All met. The light fires each time the angle passes 40°.');
+    for (i=0;i<15;i++){ setText(RV[i], W.setValue(i)); setCls(RLI[i], 'cur', s.mode==='TK' && s.sub==='set' && s.setIdx===i); }
+    for (i=0;i<5;i++){
+      w = s.wt[i]; c = C[w.c]; f = W.slotNow(i); x = W.hm(f);
+      setText(SL[i].nm, c[0]); setText(SL[i].tm, x.big.slice(0,2).replace(' ','')+':'+x.big.slice(2)+(s.h24 ? '' : (x.P ? ' PM' : ' AM')));
+      setText(SL[i].mt, fmtOff(c[1])+(w.dst ? ' · DST on' : ''));
+      setAttr(SL[i].b, 'aria-pressed', String(i===s.wtSel));
+    }
+    setText($('cm-n'), String(s.wtSel+1));
+    setAttr($('cm-slot'), 'aria-pressed', String(cityMode==='slot')); setAttr($('cm-home'), 'aria-pressed', String(cityMode==='home'));
+    for (i=0;i<CB.length;i++) setCls(CB[i], 'home', i===s.home);
+  }
+
+  /* ---------- frame loop ---------- */
+  var lastSync = 0, wf = $('watchfig');
+  function frame(){
+    var t = Date.now(), v, ph, i, k, on, I, s, h, st;
+    W.tick();
+    v = W.view(); ph = (Math.floor(t/400)%2)===0; I = v.ind; s = W.state;
+    setCls(lcd, 'lit', v.lit); setCls(lcd, 'blank', v.off); setCls(gauge, 'lit', v.lit);
+    for (i=0;i<11;i++) buf11[i] = 0;
+    if (!v.off && v.tl && !(v.tlF && !ph)){ k = lay(v.tl).c; for (i=0;i<k.length && i<11;i++) buf11[i] = k[i]; }
+    paint(TL, buf11);
+    drawWin(v.off ? {text:''} : v.win, t, ph);
+    for (i=0;i<4;i++) setDigit(BIG[i], (v.off || (v.bigF[i>>1] && !ph)) ? ' ' : v.big.charAt(i));
+    for (i=0;i<2;i++) setDigit(SML[i], (v.off || (v.smallF && !ph)) ? ' ' : v.small.charAt(i));
+    setCls(COLON, 'on', !v.off && v.colon); setCls(PRIME, 'on', !v.off && v.prime); setCls(DPRIME, 'on', !v.off && v.dprime);
+    for (k in IND){
+      on = v.off ? 0 : (I[k]||0);
+      if (!v.off && uiFlash && t<uiFlash.until && (uiFlash.k===k || (uiFlash.k==='LMH' && (k==='L' || k==='M' || k==='H')))) on = 2;
+      setCls(IND[k], 'on', on===2 ? ph : !!on);
+    }
+    for (i=0;i<4;i++){
+      h = W.holdInfo(BTNS[i]);
+      BTN[BTNS[i]].ring.style.strokeDashoffset = (RC*(1-h.p)).toFixed(1);
+    }
+    setCls(wf, 'beeping', !!(s.beep && t<s.beep.until && s.beep.kind!=='sig'));
+    st = W.status(); setText($('st-title'), st[0]); setText($('st-detail'), st[1]);
+    syncActs();
+    if (t-lastSync > 200){ lastSync = t; syncPanels(); }
+    window.requestAnimationFrame(frame);
+  }
+  addLog('Ready. The time follows this device\u2019s clock.');
+  syncPanels();
+  window.requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
